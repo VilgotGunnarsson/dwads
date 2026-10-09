@@ -1,0 +1,49 @@
+{% doc %}
+  Renders a product or variant price using the store's money format (SEK).
+  Compare-at prices are only shown when the merchant has enabled them in theme settings
+  (see the price-information note in settings), to avoid misleading discounts.
+
+  @param {product} product - The product
+  @param {variant} [variant] - The selected variant (defaults to the selected or first available)
+  @param {boolean} [show_from] - Prefix "Från" when variant prices differ (cards)
+  @param {string} [class] - Extra CSS class
+
+  @example
+  {% render 'price', product: product, show_from: true %}
+{% enddoc %}
+{%- liquid
+  assign target = variant | default: product.selected_or_first_available_variant
+  assign price = target.price
+  assign compare_at = target.compare_at_price
+  assign on_sale = false
+  if settings.show_compare_at_price and compare_at > price
+    assign on_sale = true
+  endif
+  assign varies = false
+  if show_from and product.price_varies
+    assign varies = true
+    assign price = product.price_min
+  endif
+-%}
+<div class="price{% if on_sale %} price--sale{% endif %} {{ class }}" data-price>
+  {%- if varies -%}
+    {%- assign price_formatted = price | money -%}
+    <span class="price__current">{{ 'products.price_from' | t: price: price_formatted }}</span>
+  {%- else -%}
+    <span class="visually-hidden">{% if on_sale %}{{ 'products.sale_price' | t }}{% else %}{{ 'products.price' | t }}{% endif %}</span>
+    <span class="price__current">{{ price | money }}</span>
+    {%- if on_sale -%}
+      <span class="visually-hidden">{{ 'products.regular_price' | t }}</span>
+      <s class="price__compare">{{ compare_at | money }}</s>
+    {%- endif -%}
+  {%- endif -%}
+  {%- if target.unit_price_measurement -%}
+    <span class="price__unit">
+      {{- target.unit_price | money }}/
+      {%- if target.unit_price_measurement.reference_value != 1 -%}
+        {{- target.unit_price_measurement.reference_value -}}
+      {%- endif -%}
+      {{- target.unit_price_measurement.reference_unit -}}
+    </span>
+  {%- endif -%}
+</div>

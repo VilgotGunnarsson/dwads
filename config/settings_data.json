@@ -1,0 +1,11 @@
+{
+  "current": "Varsam",
+  "presets": {
+    "Varsam": {
+      "brand_name": "Varsam",
+      "brand_tagline": "Barnsäkerhet för hem med omtanke",
+      "type_heading_font": "fraunces_n4",
+      "type_body_font": "instrument_sans_n4"
+    }
+  }
+}

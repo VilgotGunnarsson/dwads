@@ -1,0 +1,77 @@
+{%- assign image = section.settings.image -%}
+<section class="section scheme-{{ section.settings.scheme }}">
+  <div class="container split split--{{ section.settings.layout }}">
+    <div class="split__media media-shape--{{ section.settings.shape }}">
+      {%- if image != blank -%}
+        {%- assign image_alt = image.alt | default: section.settings.heading -%}
+        {{
+          image
+          | image_url: width: 1400
+          | image_tag:
+            widths: '480, 720, 960, 1200, 1400',
+            sizes: '(min-width: 990px) 50vw, 100vw',
+            loading: 'lazy',
+            alt: image_alt
+        }}
+      {%- else -%}
+        <div class="media-placeholder">{{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+      {%- endif -%}
+    </div>
+    <div class="split__content">
+      {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2 class="h2">{{ section.settings.heading | escape }}</h2>{%- endif -%}
+      {%- if section.settings.text != blank -%}<div class="rte">{{ section.settings.text }}</div>{%- endif -%}
+      {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+        <a class="button button--secondary" href="{{ section.settings.button_link }}">{{ section.settings.button_label | escape }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Bild med text",
+  "class": "section-image-with-text",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Bild" },
+    {
+      "type": "select",
+      "id": "shape",
+      "label": "Bildform",
+      "options": [
+        { "value": "arch", "label": "Valv" },
+        { "value": "rectangle", "label": "Rektangel" }
+      ],
+      "default": "rectangle"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        { "value": "image-left", "label": "Bild till vänster" },
+        { "value": "image-right", "label": "Bild till höger" }
+      ],
+      "default": "image-left"
+    },
+    { "type": "text", "id": "eyebrow", "label": "Överrubrik" },
+    { "type": "text", "id": "heading", "label": "Rubrik", "default": "Rubrik" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Berätta om något som betyder något för dina kunder.</p>" },
+    { "type": "text", "id": "button_label", "label": "Knapptext" },
+    { "type": "url", "id": "button_link", "label": "Knapplänk" },
+    {
+      "type": "select",
+      "id": "scheme",
+      "label": "Färgschema",
+      "options": [
+        { "value": "base", "label": "Kräm" },
+        { "value": "surface", "label": "Benvit" },
+        { "value": "beige", "label": "Beige" },
+        { "value": "sage", "label": "Salvia" }
+      ],
+      "default": "base"
+    }
+  ],
+  "presets": [{ "name": "Bild med text" }]
+}
+{% endschema %}

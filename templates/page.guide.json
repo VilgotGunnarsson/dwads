@@ -1,0 +1,78 @@
+{
+  "sections": {
+    "main": { "type": "main-page", "settings": { "width": "narrow" } },
+    "rooms": {
+      "type": "room-guide",
+      "blocks": {
+        "r1": { "type": "step", "settings": { "title": "Kök", "text": "<p>Köket rymmer mycket som kan skada små barn: rengöringsmedel, knivar, glas och varma ytor. Sätt spärrar på skåp och lådor i barnets höjd och vänd kastrullhandtag inåt mot spisens mitt.</p>" } },
+        "r2": { "type": "step", "settings": { "title": "Badrum", "text": "<p>Läkemedel, kosmetika och rengöringsmedel bör förvaras utom räckhåll eller i ett låst skåp. Håll toalettlocket stängt och lämna aldrig ett litet barn ensamt nära vatten.</p>" } },
+        "r3": { "type": "step", "settings": { "title": "Vardagsrum", "text": "<p>Bordskanter och hörn hamnar snabbt i huvudhöjd. Kantskydd mildrar stötar, och bokhyllor, byråer och tv-möbler bör förankras i väggen enligt tillverkarens anvisningar.</p>" } },
+        "r4": { "type": "step", "settings": { "title": "Dörrar, hall och trappor", "text": "<p>Dörrstopp och klämskydd minskar risken för klämda fingrar. Trappor behöver grindar som är avsedda för just den placeringen – en grind högst upp i en trappa ställer andra krav än en längst ner.</p>" } },
+        "r5": { "type": "step", "settings": { "title": "Eluttag och sladdar", "text": "<p>Uttag i golvhöjd är lätta att nå. Uttagsskydd och ordning på sladdar och laddare gör det svårare för barnet att komma åt dem.</p>" } }
+      },
+      "block_order": ["r1", "r2", "r3", "r4", "r5"],
+      "settings": {
+        "eyebrow": "Rum för rum",
+        "heading": "Gå igenom hemmet rum för rum",
+        "text": "<p>Gå runt i hemmet på barnets nivå – bokstavligen. Sätt dig på golvet och se vad som går att nå, dra i eller klättra på.</p>",
+        "scheme": "surface"
+      }
+    },
+    "stages": {
+      "type": "room-guide",
+      "blocks": {
+        "s1": { "type": "step", "settings": { "title": "När barnet börjar rulla och åla", "text": "<p>Se över golvnivån: lösa sladdar, eluttag och små föremål som kan hamna i munnen.</p>" } },
+        "s2": { "type": "step", "settings": { "title": "När barnet kryper", "text": "<p>Lådor och skåp i låg höjd blir spännande. Sätt spärrar på dem som innehåller något farligt och skydda uttag.</p>" } },
+        "s3": { "type": "step", "settings": { "title": "När barnet drar sig upp och står", "text": "<p>Bordskanter och hörn hamnar i huvudhöjd, och möbler kan användas som stöd. Kontrollera att tunga möbler är förankrade.</p>" } },
+        "s4": { "type": "step", "settings": { "title": "När barnet går och klättrar", "text": "<p>Barn når högre än man tror. Flytta farliga saker ännu högre upp och se över fönster, balkongdörrar och trappor.</p>" } }
+      },
+      "block_order": ["s1", "s2", "s3", "s4"],
+      "settings": {
+        "eyebrow": "I takt med barnet",
+        "heading": "Vad behövs när?",
+        "text": "<p>Barn utvecklas i olika takt. Utgå från vad ditt barn kan göra nu – och vad det snart kommer att kunna.</p>",
+        "scheme": "base"
+      }
+    },
+    "checklist": {
+      "type": "safety-checklist",
+      "blocks": {
+        "g1": { "type": "group", "settings": { "title": "Kök" } },
+        "i1": { "type": "item", "settings": { "text": "Rengöringsmedel och diskmedel förvaras högt upp eller i låst skåp" } },
+        "i2": { "type": "item", "settings": { "text": "Lådor med knivar och vassa redskap har spärr" } },
+        "i3": { "type": "item", "settings": { "text": "Kastrullhandtag vänds inåt mot spisens mitt" } },
+        "g2": { "type": "group", "settings": { "title": "Badrum" } },
+        "i4": { "type": "item", "settings": { "text": "Läkemedel och kosmetika förvaras i låst skåp" } },
+        "i5": { "type": "item", "settings": { "text": "Toalettlocket hålls stängt" } },
+        "g3": { "type": "group", "settings": { "title": "Vardagsrum" } },
+        "i6": { "type": "item", "settings": { "text": "Vassa hörn på bord och hyllor har kantskydd" } },
+        "i7": { "type": "item", "settings": { "text": "Bokhyllor, byråer och tv-möbler är förankrade i väggen" } },
+        "i8": { "type": "item", "settings": { "text": "Sladdar och laddare är utom räckhåll" } },
+        "g4": { "type": "group", "settings": { "title": "Hela hemmet" } },
+        "i9": { "type": "item", "settings": { "text": "Eluttag i barnets höjd har skydd" } },
+        "i10": { "type": "item", "settings": { "text": "Dörrar som kan slå igen har dörrstopp eller klämskydd" } },
+        "i11": { "type": "item", "settings": { "text": "Trappor har grindar avsedda för placeringen" } },
+        "i12": { "type": "item", "settings": { "text": "Knappcellsbatterier, magneter och andra smådelar förvaras utom räckhåll" } },
+        "i13": { "type": "item", "settings": { "text": "Fönster och balkongdörrar har spärr" } }
+      },
+      "block_order": ["g1", "i1", "i2", "i3", "g2", "i4", "i5", "g3", "i6", "i7", "i8", "g4", "i9", "i10", "i11", "i12", "i13"],
+      "settings": {
+        "eyebrow": "Checklista",
+        "heading": "Bocka av medan du går runt",
+        "text": "<p>Dina val sparas bara i din egen webbläsare. Skriv gärna ut listan.</p>",
+        "disclaimer": "<p>Checklistan är allmän vägledning och ersätter inte tillverkarens anvisningar eller din egen bedömning av hemmet. Mer information om barns säkerhet finns hos <a href=\"https://www.1177.se\" target=\"_blank\">1177</a>.</p>",
+        "scheme": "surface"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Nyhetsbrev",
+        "heading": "Fler tips, när de behövs",
+        "text": "<p>Få råd om barnsäkerhet i takt med att barnet växer. Du kan avsluta prenumerationen när du vill.</p>",
+        "scheme": "dark"
+      }
+    }
+  },
+  "order": ["main", "rooms", "stages", "checklist", "newsletter"]
+}

@@ -1,0 +1,42 @@
+<section class="section">
+  <div class="container">
+    <h1 class="h1 page-title">{{ section.settings.heading | escape }}</h1>
+    {%- if collections.size > 0 -%}
+      <ul class="category-list" role="list">
+        {%- for c in collections -%}
+          {%- unless c.handle == 'frontpage' -%}
+            <li class="category-list__item">
+              <a href="{{ c.url }}" class="category-card">
+                <span class="category-card__media">
+                  {%- if c.featured_image -%}
+                    {%- assign c_alt = c.featured_image.alt | default: c.title -%}
+                    {{ c.featured_image | image_url: width: 900 | image_tag: widths: '300, 450, 600, 900', sizes: '(min-width: 990px) 30vw, 75vw', loading: 'lazy', alt: c_alt }}
+                  {%- else -%}
+                    {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                  {%- endif -%}
+                </span>
+                <span class="category-card__label">
+                  <span class="category-card__title">{{ c.title | escape }}</span>
+                  <span class="muted">{{ 'collections.product_count' | t: count: c.products_count }}</span>
+                  {% render 'icon', name: 'arrow', class: 'category-card__arrow' %}
+                </span>
+              </a>
+            </li>
+          {%- endunless -%}
+        {%- endfor -%}
+      </ul>
+    {%- else -%}
+      <p class="muted">{{ 'collections.empty' | t }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Alla kategorier",
+  "class": "section-list-collections",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Rubrik", "default": "Alla kategorier" }
+  ]
+}
+{% endschema %}

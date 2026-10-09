@@ -1,0 +1,38 @@
+{% doc %}
+  Delivery and returns information. Uses, in order: the product metafield
+  `custom.delivery_estimate`, the theme setting `delivery_text`, or a neutral
+  fallback. Never shows an unverified delivery promise or free-shipping claim.
+
+  @param {product} [product] - Current product (optional)
+  @param {boolean} [show_returns] - Also show the returns line (default true)
+
+  @example
+  {% render 'delivery-note', product: product %}
+{% enddoc %}
+{%- liquid
+  assign delivery = product.metafields.custom.delivery_estimate.value | default: settings.delivery_text
+-%}
+<ul class="delivery-note" role="list">
+  <li class="delivery-note__item">
+    {% render 'icon', name: 'truck' %}
+    <span>
+      {%- if delivery != blank -%}
+        <strong>{{ 'products.delivery_label' | t }}:</strong> {{ delivery | escape }}.
+        {{ 'products.delivery_checkout_note' | t }}
+      {%- else -%}
+        {{ 'products.delivery_fallback' | t }}
+      {%- endif -%}
+    </span>
+  </li>
+  {%- unless show_returns == false -%}
+    {%- if settings.returns_text != blank -%}
+      <li class="delivery-note__item">
+        {% render 'icon', name: 'return' %}
+        <span>
+          {{ settings.returns_text | escape }}
+          {%- if shop.refund_policy %} <a href="{{ shop.refund_policy.url }}">{{ 'products.returns_link' | t }}</a>{% endif -%}
+        </span>
+      </li>
+    {%- endif -%}
+  {%- endunless -%}
+</ul>

@@ -1,0 +1,43 @@
+{% doc %}
+  Renders the brand wordmark (or uploaded logo). The brand name comes from the
+  `brand_name` theme setting so it can be replaced in one place.
+
+  @param {string} [size] - 'default' or 'large'
+  @param {boolean} [link] - Wrap in a link to the homepage (default true)
+
+  @example
+  {% render 'wordmark', size: 'large' %}
+{% enddoc %}
+{%- liquid
+  assign brand = settings.brand_name | default: shop.name
+  assign wrap_link = true
+  if link == false
+    assign wrap_link = false
+  endif
+-%}
+{%- capture inner -%}
+  {%- if settings.logo != blank -%}
+    {%- assign logo_w = settings.logo_width | times: 2 -%}
+    {{
+      settings.logo
+      | image_url: width: logo_w
+      | image_tag: class: 'wordmark__logo', alt: brand, width: settings.logo_width, loading: 'eager'
+    }}
+  {%- else -%}
+    {%- if settings.show_brand_mark -%}
+      <svg class="wordmark__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <path d="M6 26V14C6 9.6 9.6 6 14 6h12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M12 26v-8a6 6 0 0 1 6-6h8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" opacity=".55"/>
+      </svg>
+    {%- endif -%}
+    <span class="wordmark__text">{{ brand }}</span>
+  {%- endif -%}
+{%- endcapture -%}
+{%- if wrap_link -%}
+  <a href="{{ routes.root_url }}" class="wordmark wordmark--{{ size | default: 'default' }}">
+    {{- inner -}}
+    {%- if settings.logo == blank %}<span class="visually-hidden"> – {{ 'general.home' | t }}</span>{% endif -%}
+  </a>
+{%- else -%}
+  <span class="wordmark wordmark--{{ size | default: 'default' }}">{{ inner }}</span>
+{%- endif -%}

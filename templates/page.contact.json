@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-contact",
+      "settings": {
+        "heading": "Kontakta oss",
+        "text": "<p>Har du frågor om en produkt, din beställning eller en retur? Skriv till oss så återkommer vi så snart vi kan.</p>"
+      }
+    }
+  },
+  "order": ["main"]
+}

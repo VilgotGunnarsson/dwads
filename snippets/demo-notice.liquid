@@ -1,0 +1,12 @@
+{% doc %}
+  Notice shown instead of purchase controls for products tagged `demo`.
+  Demo products must never be sold – remove the tag only after replacing all content
+  with verified supplier data.
+
+  @example
+  {% render 'demo-notice' %}
+{% enddoc %}
+<div class="demo-notice" role="note">
+  {% render 'icon', name: 'info' %}
+  <p><strong>{{ 'products.demo_badge' | t }}.</strong> {{ 'products.demo_notice' | t }}</p>
+</div>

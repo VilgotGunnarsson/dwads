@@ -1,0 +1,78 @@
+{%- liquid
+  assign per_page = section.settings.products_per_page
+-%}
+<section class="collection-page" data-section-id="{{ section.id }}">
+  <div class="container">
+    {% render 'breadcrumbs', collection: collection %}
+    <header class="collection-hero{% if collection.image and section.settings.show_image %} collection-hero--image{% endif %}">
+      <div class="collection-hero__text">
+        <h1 class="h1">{{ collection.title | escape }}</h1>
+        {%- if collection.description != blank -%}
+          <div class="rte muted collection-hero__desc">{{ collection.description }}</div>
+        {%- endif -%}
+      </div>
+      {%- if collection.image and section.settings.show_image -%}
+        <div class="collection-hero__media">
+          {%- assign collection_alt = collection.image.alt | default: collection.title -%}
+          {{
+            collection.image
+            | image_url: width: 1200
+            | image_tag: widths: '480, 720, 960, 1200', sizes: '(min-width: 990px) 40vw, 100vw', loading: 'eager', alt: collection_alt
+          }}
+        </div>
+      {%- endif -%}
+    </header>
+
+    {%- paginate collection.products by per_page -%}
+      {% render 'facets', results: collection, clear_url: collection.url %}
+
+      {%- if collection.products.size > 0 -%}
+        <ul class="product-grid product-grid--{{ section.settings.columns }}" role="list" id="ProductGrid">
+          {%- for product in collection.products -%}
+            {%- assign eager = false -%}
+            {%- if forloop.index <= 2 -%}{%- assign eager = true -%}{%- endif -%}
+            <li>{% render 'product-card', product: product, heading_level: 'h2', eager: eager %}</li>
+          {%- endfor -%}
+        </ul>
+        {% render 'pagination', paginate: paginate %}
+      {%- else -%}
+        <div class="empty-state">
+          {%- if collection.filters.size > 0 and collection.all_products_count > 0 -%}
+            <p class="h3">{{ 'collections.no_matches' | t }}</p>
+            <p class="muted">{{ 'collections.no_matches_text' | t }}</p>
+            <a class="button button--secondary" href="{{ collection.url }}">{{ 'collections.clear_all' | t }}</a>
+          {%- else -%}
+            <p class="h3">{{ 'collections.empty' | t }}</p>
+            <p class="muted">{{ 'collections.empty_text' | t }}</p>
+            <a class="button" href="{{ routes.all_products_collection_url }}">{{ 'collections.view_all_products' | t }}</a>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Kollektion",
+  "class": "section-main-collection",
+  "settings": [
+    { "type": "range", "id": "products_per_page", "label": "Produkter per sida", "min": 8, "max": 36, "step": 4, "default": 16 },
+    {
+      "type": "select",
+      "id": "columns",
+      "label": "Kolumner på dator",
+      "options": [
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" }
+      ],
+      "default": "4"
+    },
+    { "type": "checkbox", "id": "show_image", "label": "Visa kollektionsbild", "default": true },
+    {
+      "type": "paragraph",
+      "content": "Filter skapas i appen Search & Discovery (gratis från Shopify), t.ex. pris, produkttyp, tillgänglighet och monteringssätt."
+    }
+  ]
+}
+{% endschema %}

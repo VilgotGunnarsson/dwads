@@ -1,0 +1,51 @@
+{% doc %}
+  Company identity block (required disclosures under Swedish e-commerce law), social
+  links and payment icons. Every item renders only when it is configured – nothing
+  is shown as a placeholder on the live storefront.
+
+  @param {string} part - 'company', 'social' or 'payments'
+
+  @example
+  {% render 'footer-extras', part: 'company' %}
+{% enddoc %}
+{%- case part -%}
+  {%- when 'company' -%}
+    {%- if settings.company_name != blank or settings.company_email != blank or settings.company_address != blank -%}
+      <address class="company-info">
+        {%- if settings.company_name != blank -%}<strong>{{ settings.company_name | escape }}</strong><br>{%- endif -%}
+        {%- if settings.company_org_number != blank -%}{{ 'footer.org_number' | t }} {{ settings.company_org_number | escape }}<br>{%- endif -%}
+        {%- if settings.company_address != blank -%}{{ settings.company_address | escape | newline_to_br }}<br>{%- endif -%}
+        {%- if settings.company_email != blank -%}<a href="mailto:{{ settings.company_email | escape }}">{{ settings.company_email | escape }}</a><br>{%- endif -%}
+        {%- if settings.company_phone != blank -%}<a href="tel:{{ settings.company_phone | remove: ' ' | remove: '-' | escape }}">{{ settings.company_phone | escape }}</a>{%- endif -%}
+      </address>
+    {%- elsif request.design_mode -%}
+      <p class="editor-hint">{{ 'footer.company_missing_hint' | t }}</p>
+    {%- endif -%}
+
+  {%- when 'social' -%}
+    {%- if settings.social_instagram != blank or settings.social_facebook != blank or settings.social_tiktok != blank or settings.social_pinterest != blank -%}
+      <ul class="social-links" role="list">
+        {%- if settings.social_instagram != blank -%}
+          <li><a href="{{ settings.social_instagram | escape }}" rel="noopener" target="_blank">{% render 'icon', name: 'instagram' %}<span class="visually-hidden">Instagram ({{ 'general.opens_new_window' | t }})</span></a></li>
+        {%- endif -%}
+        {%- if settings.social_facebook != blank -%}
+          <li><a href="{{ settings.social_facebook | escape }}" rel="noopener" target="_blank">{% render 'icon', name: 'facebook' %}<span class="visually-hidden">Facebook ({{ 'general.opens_new_window' | t }})</span></a></li>
+        {%- endif -%}
+        {%- if settings.social_tiktok != blank -%}
+          <li><a href="{{ settings.social_tiktok | escape }}" rel="noopener" target="_blank">{% render 'icon', name: 'tiktok' %}<span class="visually-hidden">TikTok ({{ 'general.opens_new_window' | t }})</span></a></li>
+        {%- endif -%}
+        {%- if settings.social_pinterest != blank -%}
+          <li><a href="{{ settings.social_pinterest | escape }}" rel="noopener" target="_blank">{% render 'icon', name: 'pinterest' %}<span class="visually-hidden">Pinterest ({{ 'general.opens_new_window' | t }})</span></a></li>
+        {%- endif -%}
+      </ul>
+    {%- endif -%}
+
+  {%- when 'payments' -%}
+    {%- if settings.show_payment_icons and shop.enabled_payment_types.size > 0 -%}
+      <ul class="payment-icons" role="list" aria-label="{{ 'footer.payment_methods' | t }}">
+        {%- for type in shop.enabled_payment_types -%}
+          <li>{{ type | payment_type_svg_tag: class: 'payment-icon' }}</li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+{%- endcase -%}

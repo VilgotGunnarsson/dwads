@@ -1,0 +1,385 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Varsam",
+    "theme_version": "1.0.0",
+    "theme_author": "Varsam (arbetsnamn)",
+    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
+    "theme_support_url": "https://help.shopify.com"
+  },
+  {
+    "name": "Varumärke",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Varumärkesnamnet används i ordmärket, sidtitlar, sidfot och metadata. Byt det här så uppdateras hela temat. Ändra även butikens namn under Inställningar → Allmänt – det visas i kassan och i e-postmeddelanden."
+      },
+      {
+        "type": "text",
+        "id": "brand_name",
+        "label": "Varumärkesnamn",
+        "default": "Varsam"
+      },
+      {
+        "type": "text",
+        "id": "brand_tagline",
+        "label": "Slogan",
+        "default": "Barnsäkerhet för hem med omtanke"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logotyp (valfri)",
+        "info": "Lämna tomt för att använda ordmärket. SVG eller PNG med transparent bakgrund rekommenderas."
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "label": "Logotypens bredd",
+        "min": 60,
+        "max": 240,
+        "step": 4,
+        "unit": "px",
+        "default": 120
+      },
+      {
+        "type": "checkbox",
+        "id": "show_brand_mark",
+        "label": "Visa symbol bredvid ordmärket",
+        "default": true
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon",
+        "info": "32 × 32 px"
+      },
+      {
+        "type": "image_picker",
+        "id": "share_image",
+        "label": "Standardbild för delning i sociala medier",
+        "info": "Används när sidan saknar egen bild. 1200 × 630 px rekommenderas."
+      }
+    ]
+  },
+  {
+    "name": "Färger",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Bas"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Bakgrund (kräm)",
+        "default": "#F5F0E8"
+      },
+      {
+        "type": "color",
+        "id": "color_surface",
+        "label": "Yta (benvit)",
+        "default": "#FBF8F3"
+      },
+      {
+        "type": "color",
+        "id": "color_beige",
+        "label": "Beige",
+        "default": "#EAE1D3"
+      },
+      {
+        "type": "color",
+        "id": "color_sage",
+        "label": "Salvia (ljus)",
+        "default": "#DCE2D3"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text",
+        "default": "#2A2926"
+      },
+      {
+        "type": "color",
+        "id": "color_text_muted",
+        "label": "Sekundär text",
+        "default": "#615D55"
+      },
+      {
+        "type": "color",
+        "id": "color_border",
+        "label": "Linjer och ramar",
+        "default": "#DDD4C6"
+      },
+      {
+        "type": "header",
+        "content": "Knappar och accenter"
+      },
+      {
+        "type": "color",
+        "id": "color_button",
+        "label": "Primär knapp",
+        "default": "#4A5A43"
+      },
+      {
+        "type": "color",
+        "id": "color_button_text",
+        "label": "Primär knapp – text",
+        "default": "#FBF8F3"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent (terrakotta)",
+        "info": "Används sparsamt för etiketter och detaljer.",
+        "default": "#9C5233"
+      },
+      {
+        "type": "header",
+        "content": "Mörkt färgschema"
+      },
+      {
+        "type": "color",
+        "id": "color_dark_background",
+        "label": "Mörk bakgrund",
+        "default": "#2F342C"
+      },
+      {
+        "type": "color",
+        "id": "color_dark_text",
+        "label": "Text på mörk bakgrund",
+        "default": "#F1ECE3"
+      }
+    ]
+  },
+  {
+    "name": "Typografi",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "type_heading_font",
+        "label": "Rubriker",
+        "default": "fraunces_n4"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_body_font",
+        "label": "Brödtext",
+        "default": "instrument_sans_n4"
+      },
+      {
+        "type": "range",
+        "id": "heading_scale",
+        "label": "Rubrikstorlek",
+        "min": 85,
+        "max": 120,
+        "step": 5,
+        "unit": "%",
+        "default": 100
+      },
+      {
+        "type": "range",
+        "id": "body_size",
+        "label": "Brödtextens storlek",
+        "min": 15,
+        "max": 18,
+        "step": 1,
+        "unit": "px",
+        "default": 16
+      }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      {
+        "type": "range",
+        "id": "page_width",
+        "label": "Maximal sidbredd",
+        "min": 1000,
+        "max": 1600,
+        "step": 20,
+        "unit": "px",
+        "default": 1280
+      },
+      {
+        "type": "range",
+        "id": "button_radius",
+        "label": "Knapparnas hörnradie",
+        "min": 0,
+        "max": 40,
+        "step": 2,
+        "unit": "px",
+        "default": 40
+      },
+      {
+        "type": "range",
+        "id": "media_radius",
+        "label": "Bilders hörnradie",
+        "min": 0,
+        "max": 16,
+        "step": 1,
+        "unit": "px",
+        "default": 3
+      },
+      {
+        "type": "range",
+        "id": "input_radius",
+        "label": "Fältens hörnradie",
+        "min": 0,
+        "max": 16,
+        "step": 1,
+        "unit": "px",
+        "default": 3
+      }
+    ]
+  },
+  {
+    "name": "Produktkort",
+    "settings": [
+      {
+        "type": "select",
+        "id": "card_image_ratio",
+        "label": "Bildformat",
+        "options": [
+          { "value": "square", "label": "Kvadrat (1:1)" },
+          { "value": "portrait", "label": "Stående (4:5)" }
+        ],
+        "default": "square"
+      },
+      {
+        "type": "checkbox",
+        "id": "card_show_secondary_image",
+        "label": "Visa andra bilden vid hovring",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "card_show_type",
+        "label": "Visa produkttyp",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Varukorg",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_type",
+        "label": "Varukorgstyp",
+        "options": [
+          { "value": "drawer", "label": "Sidopanel" },
+          { "value": "page", "label": "Egen sida" }
+        ],
+        "default": "drawer"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_show_note",
+        "label": "Visa fält för meddelande till butiken",
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "Leverans, retur och priser",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Fyll bara i uppgifter som är bekräftade med din leverantör och dina fraktinställningar. Tomma fält visar ett neutralt meddelande i stället för ett löfte."
+      },
+      {
+        "type": "text",
+        "id": "delivery_text",
+        "label": "Leveranstid (standard för alla produkter)",
+        "info": "T.ex. ”Normalt 5–9 arbetsdagar”. Lämna tomt tills leveranstiden är bekräftad. Kan ersättas per produkt med metafältet custom.delivery_estimate."
+      },
+      {
+        "type": "textarea",
+        "id": "returns_text",
+        "label": "Kort text om ångerrätt och retur",
+        "info": "En länk till returpolicyn läggs till automatiskt när policyn finns under Inställningar → Policyer.",
+        "default": "Som konsument har du normalt 14 dagars ångerrätt vid köp på distans."
+      },
+      {
+        "type": "header",
+        "content": "Prisvisning"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_compare_at_price",
+        "label": "Visa jämförpris (rea)",
+        "info": "Av som standard. Enligt prisinformationslagen ska ett angivet ordinarie pris vid prissänkning vara det lägsta priset de senaste 30 dagarna. Aktivera bara om dina jämförpriser uppfyller kraven.",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_payment_icons",
+        "label": "Visa ikoner för aktiverade betalsätt i sidfoten",
+        "info": "Visar endast de betalsätt som faktiskt är aktiverade i butiken.",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Företagsuppgifter",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Enligt e-handelslagen ska kunder enkelt kunna hitta företagets namn, organisationsnummer, adress och e-post. Uppgifterna visas i sidfoten och på kontaktsidan när de är ifyllda."
+      },
+      {
+        "type": "text",
+        "id": "company_name",
+        "label": "Företagsnamn"
+      },
+      {
+        "type": "text",
+        "id": "company_org_number",
+        "label": "Organisationsnummer"
+      },
+      {
+        "type": "textarea",
+        "id": "company_address",
+        "label": "Postadress"
+      },
+      {
+        "type": "text",
+        "id": "company_email",
+        "label": "E-post för kundservice"
+      },
+      {
+        "type": "text",
+        "id": "company_phone",
+        "label": "Telefon (valfritt)"
+      },
+      {
+        "type": "text",
+        "id": "company_hours",
+        "label": "Svarstider (valfritt)",
+        "info": "T.ex. ”Vi svarar vardagar inom 1–2 arbetsdagar”. Lämna tomt om du inte kan lova en svarstid."
+      }
+    ]
+  },
+  {
+    "name": "Sociala medier",
+    "settings": [
+      { "type": "text", "id": "social_instagram", "label": "Instagram", "info": "https://www.instagram.com/…" },
+      { "type": "text", "id": "social_facebook", "label": "Facebook", "info": "https://www.facebook.com/…" },
+      { "type": "text", "id": "social_tiktok", "label": "TikTok", "info": "https://www.tiktok.com/@…" },
+      { "type": "text", "id": "social_pinterest", "label": "Pinterest", "info": "https://www.pinterest.se/…" }
+    ]
+  },
+  {
+    "name": "Sök",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "predictive_search",
+        "label": "Visa sökförslag medan kunden skriver",
+        "default": true
+      }
+    ]
+  }
+]

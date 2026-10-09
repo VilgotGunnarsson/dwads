@@ -1,0 +1,74 @@
+{%- comment -%}
+  Complementary products. Priority:
+  1. Merchant-chosen products in the metafield custom.complementary_products (rendered server-side).
+  2. Shopify product recommendations (fetched lazily by theme.js via the Section Rendering API).
+     "Complementary" uses the Search & Discovery app's settings; otherwise "related" is used.
+{%- endcomment -%}
+{%- liquid
+  assign manual = product.metafields.custom.complementary_products.value
+  assign limit = section.settings.limit
+-%}
+{%- if manual.size > 0 -%}
+  <section class="section section--compact scheme-{{ section.settings.scheme }}" aria-labelledby="Heading-{{ section.id }}">
+    <div class="container">
+      <h2 class="h3 section-title" id="Heading-{{ section.id }}">{{ section.settings.heading | escape }}</h2>
+      <ul class="product-grid product-grid--4" role="list">
+        {%- for item in manual limit: limit -%}
+          <li>{% render 'product-card', product: item %}</li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </section>
+{%- else -%}
+  <div
+    class="product-recommendations"
+    data-recommendations
+    data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ limit }}&intent={{ section.settings.intent }}"
+    data-fallback-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ limit }}&intent=related"
+  >
+    {%- if recommendations.performed and recommendations.products_count > 0 -%}
+      <section class="section section--compact scheme-{{ section.settings.scheme }}" aria-labelledby="Heading-{{ section.id }}">
+        <div class="container">
+          <h2 class="h3 section-title" id="Heading-{{ section.id }}">{{ section.settings.heading | escape }}</h2>
+          <ul class="product-grid product-grid--4" role="list">
+            {%- for item in recommendations.products -%}
+              <li>{% render 'product-card', product: item %}</li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      </section>
+    {%- endif -%}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Passar bra med",
+  "class": "section-recommendations",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Rubrik", "default": "Passar bra med" },
+    { "type": "range", "id": "limit", "label": "Antal produkter", "min": 2, "max": 8, "step": 1, "default": 4 },
+    {
+      "type": "select",
+      "id": "intent",
+      "label": "Typ av rekommendation",
+      "options": [
+        { "value": "complementary", "label": "Kompletterande (kräver Search & Discovery)" },
+        { "value": "related", "label": "Liknande" }
+      ],
+      "default": "complementary"
+    },
+    {
+      "type": "select",
+      "id": "scheme",
+      "label": "Färgschema",
+      "options": [
+        { "value": "base", "label": "Kräm" },
+        { "value": "surface", "label": "Benvit" },
+        { "value": "beige", "label": "Beige" }
+      ],
+      "default": "surface"
+    }
+  ]
+}
+{% endschema %}

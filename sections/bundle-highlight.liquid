@@ -1,0 +1,131 @@
+{%- comment -%}
+  Highlights a starter kit / bundle product. Included items come from the product
+  metafield `custom.bundle_items` (list of product references). The "bought separately"
+  total is calculated from the included products' current prices – never typed in –
+  and is only shown when it is actually higher than the bundle price.
+  Stock for bundles is NOT synchronised automatically; see docs/SETUP.md.
+{%- endcomment -%}
+{%- liquid
+  assign product = section.settings.product
+  assign items = product.metafields.custom.bundle_items.value
+  assign separate_total = 0
+  assign all_priced = true
+  for item in items
+    if item.price == blank
+      assign all_priced = false
+    endif
+    assign separate_total = separate_total | plus: item.price
+  endfor
+  assign show_compare = false
+  if all_priced and items.size > 0 and separate_total > product.price
+    assign show_compare = true
+  endif
+  assign is_demo = false
+  if product.tags contains 'demo'
+    assign is_demo = true
+  endif
+-%}
+{%- if product != blank or request.design_mode -%}
+  <section class="section scheme-{{ section.settings.scheme }}" aria-labelledby="Heading-{{ section.id }}">
+    <div class="container bundle">
+      <div class="bundle__media media-shape--rectangle">
+        {%- if product.featured_media -%}
+          {%- assign bundle_alt = product.featured_media.alt | default: product.title -%}
+          {{
+            product.featured_media.preview_image
+            | image_url: width: 1400
+            | image_tag:
+              widths: '480, 720, 960, 1200, 1400',
+              sizes: '(min-width: 990px) 50vw, 100vw',
+              loading: 'lazy',
+              alt: bundle_alt
+          }}
+        {%- else -%}
+          <div class="media-placeholder">{{ 'product-2' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+        {%- endif -%}
+      </div>
+      <div class="bundle__content">
+        {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+        <h2 class="h2" id="Heading-{{ section.id }}">{{ section.settings.heading | default: product.title | escape }}</h2>
+        {%- if section.settings.text != blank -%}<div class="rte">{{ section.settings.text }}</div>{%- endif -%}
+
+        {%- if product != blank -%}
+          {%- if items.size > 0 -%}
+            <div class="bundle__includes">
+              <p class="bundle__includes-title">{{ 'bundles.includes' | t }}</p>
+              <ul role="list">
+                {%- for item in items -%}
+                  <li><a href="{{ item.url }}">{{ item.title | escape }}</a></li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          {%- endif -%}
+          <div class="bundle__price">
+            <p class="h3"><a href="{{ product.url }}" class="bundle__product-link">{{ product.title | escape }}</a></p>
+            {% render 'price', product: product %}
+            {%- if show_compare -%}
+              {%- assign separate_formatted = separate_total | money -%}
+              {%- assign difference_formatted = separate_total | minus: product.price | money -%}
+              <p class="muted bundle__compare">
+                {{ 'bundles.separately' | t: price: separate_formatted }}
+                · {{ 'bundles.difference' | t: amount: difference_formatted }}
+              </p>
+            {%- endif -%}
+          </div>
+          {%- if is_demo -%}
+            {% render 'demo-notice' %}
+          {%- elsif product.has_only_default_variant and product.available -%}
+            {%- form 'product', product, class: 'bundle__form', data-product-form: '' -%}
+              <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+              <div class="button-row">
+                <button type="submit" class="button" data-add-to-cart>{{ 'products.add_to_cart' | t }}</button>
+                <a href="{{ product.url }}" class="button button--secondary">{{ 'products.view_product' | t }}</a>
+              </div>
+              <p class="form-message form-message--error" role="alert" data-form-error hidden></p>
+            {%- endform -%}
+          {%- else -%}
+            <a href="{{ product.url }}" class="button">{% if product.available %}{{ 'products.choose_options' | t }}{% else %}{{ 'products.view_product' | t }}{% endif %}</a>
+          {%- endif -%}
+        {%- else -%}
+          <p class="editor-hint">{{ 'sections.bundle_hint' | t }}</p>
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Startpaket",
+  "class": "section-bundle",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Paketprodukt",
+      "info": "Lägg till de ingående produkterna i produktens metafält custom.bundle_items."
+    },
+    { "type": "text", "id": "eyebrow", "label": "Överrubrik", "default": "Startpaket" },
+    { "type": "text", "id": "heading", "label": "Rubrik", "default": "Kom igång rum för rum" },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Ett samlat paket med grundläggande barnsäkerhet för de vanligaste riskerna i hemmet. Du ser exakt vad som ingår och vad delarna kostar var för sig.</p>"
+    },
+    {
+      "type": "select",
+      "id": "scheme",
+      "label": "Färgschema",
+      "options": [
+        { "value": "base", "label": "Kräm" },
+        { "value": "surface", "label": "Benvit" },
+        { "value": "beige", "label": "Beige" },
+        { "value": "sage", "label": "Salvia" }
+      ],
+      "default": "sage"
+    }
+  ],
+  "presets": [{ "name": "Startpaket" }]
+}
+{% endschema %}

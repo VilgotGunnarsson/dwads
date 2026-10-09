@@ -1,0 +1,167 @@
+{%- liquid
+  assign image = section.settings.image
+  assign heading_tag = 'h2'
+  assign loading = 'lazy'
+  assign priority = 'auto'
+  if section.index == 1
+    assign heading_tag = 'h1'
+    assign loading = 'eager'
+    assign priority = 'high'
+  endif
+-%}
+<section class="hero hero--{{ section.settings.layout }} scheme-{{ section.settings.scheme }}">
+  <div class="container hero__grid">
+    <div class="hero__content">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      <{{ heading_tag }} class="hero__heading display">{{ section.settings.heading | escape }}</{{ heading_tag }}>
+      {%- if section.settings.text != blank -%}
+        <div class="hero__text rte">{{ section.settings.text }}</div>
+      {%- endif -%}
+      <div class="button-row">
+        {%- if section.settings.button_label != blank -%}
+          <a class="button" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}" data-track="hero-primary">
+            {{- section.settings.button_label | escape -}}
+          </a>
+        {%- endif -%}
+        {%- if section.settings.button_label_2 != blank and section.settings.button_link_2 != blank -%}
+          <a class="button button--secondary" href="{{ section.settings.button_link_2 }}" data-track="hero-secondary">
+            {{- section.settings.button_label_2 | escape -}}
+          </a>
+        {%- endif -%}
+      </div>
+      {%- if section.settings.note != blank -%}
+        <p class="hero__note muted">{{ section.settings.note | escape }}</p>
+      {%- endif -%}
+    </div>
+    <div class="hero__media media-shape--{{ section.settings.shape }}">
+      {%- if image != blank -%}
+        {{
+          image
+          | image_url: width: 1800
+          | image_tag:
+            widths: '480, 720, 960, 1200, 1500, 1800',
+            sizes: '(min-width: 990px) 50vw, 100vw',
+            loading: loading,
+            fetchpriority: priority,
+            class: 'hero__img',
+            style: section.settings.image_position
+        }}
+      {%- else -%}
+        <div class="media-placeholder">
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "class": "section-hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Bild",
+      "info": "Använd en egen eller licensierad miljöbild (minst 1600 px bred). Ange alt-text i Filer."
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Bildens fokus",
+      "options": [
+        { "value": "object-position: center", "label": "Mitten" },
+        { "value": "object-position: top", "label": "Överkant" },
+        { "value": "object-position: bottom", "label": "Underkant" },
+        { "value": "object-position: left", "label": "Vänster" },
+        { "value": "object-position: right", "label": "Höger" }
+      ],
+      "default": "object-position: center"
+    },
+    {
+      "type": "select",
+      "id": "shape",
+      "label": "Bildform",
+      "options": [
+        { "value": "arch", "label": "Valv" },
+        { "value": "rectangle", "label": "Rektangel" }
+      ],
+      "default": "arch"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        { "value": "text-left", "label": "Text till vänster" },
+        { "value": "text-right", "label": "Text till höger" }
+      ],
+      "default": "text-left"
+    },
+    {
+      "type": "select",
+      "id": "scheme",
+      "label": "Färgschema",
+      "options": [
+        { "value": "base", "label": "Kräm" },
+        { "value": "surface", "label": "Benvit" },
+        { "value": "beige", "label": "Beige" },
+        { "value": "sage", "label": "Salvia" }
+      ],
+      "default": "base"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Överrubrik",
+      "default": "Barnsäkerhet för hemmet"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Rubrik",
+      "default": "Ett tryggare hem – utan att tumma på känslan"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Diskreta lösningar för skåp, lådor, dörrar och eluttag. Utvalda för att fungera i vardagen och smälta in i hemmet.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Primär knapp",
+      "default": "Handla barnsäkerhet"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Länk till primär knapp",
+      "info": "Lämnas den tom länkas knappen till alla produkter."
+    },
+    {
+      "type": "text",
+      "id": "button_label_2",
+      "label": "Sekundär knapp",
+      "default": "Läs säkerhetsguiden"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "Länk till sekundär knapp",
+      "info": "T.ex. sidan Säkerhetsguide. Knappen visas bara när en länk är vald."
+    },
+    {
+      "type": "text",
+      "id": "note",
+      "label": "Liten text under knapparna",
+      "info": "Endast korrekta uppgifter, t.ex. ”Säker betalning via Shopify”."
+    }
+  ],
+  "presets": [{ "name": "Hero" }]
+}
+{% endschema %}

@@ -1,0 +1,30 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "fit": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "Passar den hemma hos mig?",
+            "content": "<p>Jämför måtten och monteringssättet med dina skåp, lådor eller dörrar innan du beställer. Saknas en uppgift eller är du osäker – kontakta oss så hjälper vi dig.</p>"
+          }
+        }
+      },
+      "block_order": ["fit"],
+      "settings": {
+        "show_dynamic_checkout": false
+      }
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "Passar bra med",
+        "limit": 4,
+        "intent": "complementary",
+        "scheme": "surface"
+      }
+    }
+  },
+  "order": ["main", "recommendations"]
+}

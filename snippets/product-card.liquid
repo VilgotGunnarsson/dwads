@@ -1,0 +1,92 @@
+{% doc %}
+  Product card used in grids, recommendations and search results.
+  Shows only real product data. No ratings, review counts or "bestseller" labels.
+
+  @param {product} [product] - The product. When blank, renders a neutral placeholder (editor only).
+  @param {string} [heading_level] - Heading tag for the title (default h3)
+  @param {boolean} [eager] - Load the image eagerly (above the fold)
+
+  @example
+  {% render 'product-card', product: product %}
+{% enddoc %}
+{%- liquid
+  assign tag = heading_level | default: 'h3'
+  assign ratio = 1.0
+  if settings.card_image_ratio == 'portrait'
+    assign ratio = 0.8
+  endif
+  assign loading = 'lazy'
+  if eager
+    assign loading = 'eager'
+  endif
+-%}
+{%- if product == blank -%}
+  <div class="card card--placeholder">
+    <div class="card__media" style="--ratio: {{ ratio }}">
+      {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    </div>
+    <div class="card__body">
+      <{{ tag }} class="card__title">{{ 'products.placeholder_title' | t }}</{{ tag }}>
+    </div>
+  </div>
+{%- else -%}
+  {%- liquid
+    assign is_demo = false
+    if product.tags contains 'demo'
+      assign is_demo = true
+    endif
+    assign image = product.featured_media.preview_image
+    assign second = product.media[1].preview_image
+    assign image_alt = image.alt | default: product.title
+  -%}
+  <div class="card{% if settings.card_show_secondary_image and second %} card--has-second{% endif %}">
+    <a href="{{ product.url }}" class="card__link" aria-labelledby="CardTitle-{{ product.id }}">
+      <div class="card__media" style="--ratio: {{ ratio }}">
+        {%- if image -%}
+          {{
+            image
+            | image_url: width: 900
+            | image_tag:
+              widths: '240, 360, 480, 600, 720, 900',
+              sizes: '(min-width: 990px) 25vw, (min-width: 750px) 33vw, 50vw',
+              loading: loading,
+              class: 'card__img',
+              alt: image_alt
+          }}
+          {%- if settings.card_show_secondary_image and second -%}
+            {{
+              second
+              | image_url: width: 900
+              | image_tag:
+                widths: '240, 360, 480, 600, 720, 900',
+                sizes: '(min-width: 990px) 25vw, (min-width: 750px) 33vw, 50vw',
+                loading: 'lazy',
+                class: 'card__img card__img--second',
+                alt: ''
+            }}
+          {%- endif -%}
+        {%- else -%}
+          {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+        <div class="card__badges">
+          {%- if is_demo -%}
+            <span class="badge badge--demo">{{ 'products.demo_badge' | t }}</span>
+          {%- elsif product.available == false -%}
+            <span class="badge">{{ 'products.sold_out' | t }}</span>
+          {%- elsif settings.show_compare_at_price and product.compare_at_price > product.price -%}
+            <span class="badge badge--accent">{{ 'products.on_sale' | t }}</span>
+          {%- endif -%}
+        </div>
+      </div>
+    </a>
+    <div class="card__body">
+      {%- if settings.card_show_type and product.type != blank -%}
+        <p class="card__eyebrow">{{ product.type | escape }}</p>
+      {%- endif -%}
+      <{{ tag }} class="card__title" id="CardTitle-{{ product.id }}">
+        <a href="{{ product.url }}" tabindex="-1">{{ product.title | escape }}</a>
+      </{{ tag }}>
+      {% render 'price', product: product, show_from: true, class: 'card__price' %}
+    </div>
+  </div>
+{%- endif -%}

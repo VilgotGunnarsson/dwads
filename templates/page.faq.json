@@ -1,0 +1,37 @@
+{
+  "sections": {
+    "main": { "type": "main-page", "settings": { "width": "narrow" } },
+    "orders": {
+      "type": "faq",
+      "blocks": {
+        "q1": { "type": "question", "settings": { "question": "När skickas min beställning?", "answer": "<p>Leveranstiden beror på produkt och leverantör. När en uppskattning finns visas den på produktsidan, och tillgängliga fraktalternativ visas i kassan innan du betalar.</p>" } },
+        "q2": { "type": "question", "settings": { "question": "Vad kostar frakten?", "answer": "<p>Fraktkostnaden räknas ut i kassan utifrån din beställning och leveransadress, innan du bekräftar köpet.</p>" } },
+        "q3": { "type": "question", "settings": { "question": "Vilka betalsätt kan jag använda?", "answer": "<p>De betalsätt som är tillgängliga för din beställning visas i kassan.</p>" } },
+        "q4": { "type": "question", "settings": { "question": "Kan jag ändra eller avbryta min beställning?", "answer": "<p>Kontakta oss så snart som möjligt med ditt ordernummer så ser vi vad som går att göra.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3", "q4"],
+      "settings": { "eyebrow": "Beställning och leverans", "heading": "Beställning och leverans", "text": "", "scheme": "base" }
+    },
+    "products": {
+      "type": "faq",
+      "blocks": {
+        "p1": { "type": "question", "settings": { "question": "Hur vet jag om en produkt passar hemma hos mig?", "answer": "<p>Titta på mått, monteringssätt och lämpliga ytor på produktsidan. Saknas uppgiften eller är du osäker – kontakta oss innan du beställer.</p>" } },
+        "p2": { "type": "question", "settings": { "question": "Behöver jag borra?", "answer": "<p>Det beror på produkten. Vissa fästs med tejp och andra med skruv. Monteringssättet anges på produktsidan när uppgiften är bekräftad.</p>" } },
+        "p3": { "type": "question", "settings": { "question": "Lämnar självhäftande produkter märken?", "answer": "<p>Det beror på produkt och underlag. Testa gärna på en mindre synlig yta först och följ alltid tillverkarens anvisningar.</p>" } },
+        "p4": { "type": "question", "settings": { "question": "Ersätter produkterna tillsyn av barnet?", "answer": "<p>Nej. Barnsäkerhetsprodukter kan minska vissa risker, men ingen produkt ersätter en vuxens uppsikt.</p>" } }
+      },
+      "block_order": ["p1", "p2", "p3", "p4"],
+      "settings": { "eyebrow": "Produkter och montering", "heading": "Produkter och montering", "text": "", "scheme": "surface" }
+    },
+    "returns": {
+      "type": "faq",
+      "blocks": {
+        "x1": { "type": "question", "settings": { "question": "Kan jag ångra mitt köp?", "answer": "<p>Som konsument har du normalt 14 dagars ångerrätt vid köp på distans. Hur du går till väga står i vår returpolicy.</p>" } },
+        "x2": { "type": "question", "settings": { "question": "Hur reklamerar jag en vara?", "answer": "<p>Kontakta oss med ordernummer och en beskrivning av felet, gärna med en bild. Enligt konsumentköplagen har du rätt att reklamera ursprungliga fel på varan.</p>" } }
+      },
+      "block_order": ["x1", "x2"],
+      "settings": { "eyebrow": "Retur och reklamation", "heading": "Retur och reklamation", "text": "<p>Hittar du inte svaret? Kontakta oss så hjälper vi dig.</p>", "scheme": "base" }
+    }
+  },
+  "order": ["main", "orders", "products", "returns"]
+}

@@ -1,0 +1,181 @@
+{
+  "general": {
+    "home": "Startsida",
+    "close": "Stäng",
+    "error": "Något gick fel. Försök igen om en stund.",
+    "breadcrumbs": "Brödsmulor",
+    "pagination": "Sidnumrering",
+    "previous": "Föregående",
+    "next": "Nästa",
+    "page": "Sida {{ page }}",
+    "page_short": "Sida",
+    "tagged_with": "Taggat med {{ tags }}",
+    "opens_new_window": "öppnas i nytt fönster"
+  },
+  "accessibility": {
+    "skip_to_content": "Hoppa till innehållet"
+  },
+  "header": {
+    "menu": "Meny",
+    "open_menu": "Öppna menyn",
+    "main_navigation": "Huvudmeny",
+    "view_all": "Visa allt i {{ title }}",
+    "account": "Mitt konto",
+    "log_in": "Logga in"
+  },
+  "search": {
+    "title": "Sök",
+    "open": "Öppna sök",
+    "label": "Sök i butiken",
+    "placeholder": "Sök efter produkter, t.ex. lådspärr",
+    "submit": "Sök",
+    "loading": "Söker …",
+    "results_count_js": "[count] produktförslag",
+    "suggestions": "Förslag",
+    "products": "Produkter",
+    "pages": "Sidor och artiklar",
+    "view_all": "Visa alla resultat för ”{{ terms }}”",
+    "results_for": "Sökresultat för ”{{ terms }}”",
+    "no_results": "Inga träffar för ”{{ terms }}”",
+    "no_results_text": "Kontrollera stavningen eller prova ett annat ord, till exempel ”hörnskydd” eller ”uttag”."
+  },
+  "cart": {
+    "title": "Varukorg",
+    "item_count": {
+      "one": "{{ count }} vara",
+      "other": "{{ count }} varor"
+    },
+    "empty": "Din varukorg är tom",
+    "empty_text": "Utforska sortimentet och hitta det som passar ditt hem.",
+    "continue_shopping": "Fortsätt handla",
+    "subtotal": "Delsumma",
+    "summary": "Sammanfattning",
+    "taxes_included_shipping_at_checkout": "Inklusive moms. Frakt och eventuella rabatter beräknas i kassan.",
+    "taxes_and_shipping_at_checkout": "Moms, frakt och eventuella rabatter beräknas i kassan.",
+    "checkout": "Till kassan",
+    "view_cart": "Visa varukorgen",
+    "note": "Meddelande till oss (valfritt)",
+    "update": "Uppdatera varukorgen",
+    "updated": "Varukorgen har uppdaterats.",
+    "remove": "Ta bort",
+    "remove_title": "Ta bort {{ title }}",
+    "decrease": "Minska antal för {{ title }}",
+    "increase": "Öka antal för {{ title }}",
+    "quantity_for": "Antal för {{ title }}",
+    "each": "{{ price }}/st"
+  },
+  "products": {
+    "price": "Pris",
+    "price_from": "Från {{ price }}",
+    "sale_price": "Nedsatt pris",
+    "regular_price": "Ordinarie pris",
+    "on_sale": "Nedsatt",
+    "tax_included": "Inklusive moms.",
+    "add_to_cart": "Lägg i varukorgen",
+    "added_to_cart": "Produkten har lagts i varukorgen.",
+    "choose_options": "Välj alternativ",
+    "view_product": "Visa produkten",
+    "sold_out": "Tillfälligt slut",
+    "unavailable": "Inte tillgänglig",
+    "available": "Kan beställas",
+    "quantity": "Antal",
+    "quantity_decrease": "Minska antal",
+    "quantity_increase": "Öka antal",
+    "gallery": "Produktbilder",
+    "placeholder_title": "Produktnamn",
+    "description": "Beskrivning",
+    "specifications": "Specifikationer",
+    "spec_materials": "Material",
+    "spec_dimensions": "Mått",
+    "spec_installation_method": "Montering",
+    "spec_surfaces": "Passar på",
+    "spec_certifications": "Certifieringar",
+    "installation": "Monteringsanvisning",
+    "package_contents": "Förpackningen innehåller",
+    "care": "Skötsel",
+    "warnings": "Viktigt att veta",
+    "delivery_label": "Leveranstid",
+    "delivery_checkout_note": "Fraktalternativ och kostnad visas i kassan.",
+    "delivery_fallback": "Leveranstid och fraktkostnad visas i kassan innan du betalar.",
+    "returns_link": "Läs returpolicyn",
+    "demo_badge": "Demoprodukt",
+    "demo_notice": "Den här produkten visar hur sidan ser ut och kan inte köpas."
+  },
+  "bundles": {
+    "includes": "Det här ingår",
+    "separately": "Köpt var för sig: {{ price }}",
+    "difference": "{{ amount }} lägre i paket"
+  },
+  "collections": {
+    "filter": "Filtrera",
+    "apply": "Visa resultat",
+    "clear_all": "Rensa alla filter",
+    "remove_filter": "Ta bort filtret",
+    "active_filters": "Aktiva filter",
+    "sort_by": "Sortera",
+    "price_from": "Från",
+    "price_to": "Till",
+    "product_count": {
+      "one": "{{ count }} produkt",
+      "other": "{{ count }} produkter"
+    },
+    "view_all": "Visa alla",
+    "view_all_products": "Visa alla produkter",
+    "empty": "Här finns inga produkter ännu",
+    "empty_text": "Vi fyller på sortimentet. Titta gärna bland våra andra produkter så länge.",
+    "no_matches": "Inga produkter matchar dina filter",
+    "no_matches_text": "Prova att ta bort ett eller flera filter."
+  },
+  "guide": {
+    "print": "Skriv ut checklistan",
+    "reset": "Börja om",
+    "see_products": "Se produkter",
+    "checklist_progress_js": "[done] av [total] klara"
+  },
+  "newsletter": {
+    "email_label": "E-postadress",
+    "submit": "Prenumerera",
+    "consent": "Jag vill få nyhetsbrev via e-post och kan avsluta när jag vill.",
+    "privacy_link": "Läs vår integritetspolicy",
+    "success": "Tack! Din e-postadress är registrerad.",
+    "error_email": "Kontrollera att e-postadressen är korrekt ifylld."
+  },
+  "contact": {
+    "name": "Namn",
+    "email": "E-post",
+    "phone": "Telefon",
+    "order_number": "Ordernummer (om du har ett)",
+    "message": "Meddelande",
+    "submit": "Skicka meddelande",
+    "success": "Tack! Vi har tagit emot ditt meddelande och återkommer så snart vi kan.",
+    "error_heading": "Något behöver rättas till:",
+    "privacy_note": "Vi använder dina uppgifter bara för att besvara ditt meddelande."
+  },
+  "footer": {
+    "org_number": "Org.nr",
+    "payment_methods": "Betalsätt",
+    "cookie_preferences": "Cookieinställningar",
+    "company_missing_hint": "Fyll i företagsuppgifter under Temainställningar → Företagsuppgifter. (Visas bara i redigeraren.)",
+    "menu_missing_hint": "Välj en meny för blocket. (Visas bara i redigeraren.)"
+  },
+  "sections": {
+    "featured_products_hint": "Välj en kollektion med produkter för att visa den här sektionen. Utan produkter döljs den i butiken. (Visas bara i redigeraren.)",
+    "bundle_hint": "Välj en paketprodukt. Utan produkt döljs sektionen i butiken. (Visas bara i redigeraren.)"
+  },
+  "not_found": {
+    "title": "Sidan finns inte",
+    "text": "Sidan kan ha flyttats eller tagits bort. Sök efter det du letar efter eller gå till startsidan.",
+    "home": "Till startsidan"
+  },
+  "blog": {
+    "empty": "Inga inlägg ännu.",
+    "back": "Tillbaka till alla inlägg"
+  },
+  "password": {
+    "signup_heading": "Få besked när vi öppnar",
+    "enter_with_password": "Har du ett lösenord?",
+    "password": "Lösenord",
+    "enter": "Gå in",
+    "error": "Fel lösenord. Försök igen."
+  }
+}

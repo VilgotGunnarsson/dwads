@@ -1,0 +1,60 @@
+{% doc %}
+  Newsletter signup using Shopify's native customer form. A successful submission
+  stores the email as a customer with email-marketing consent in Shopify admin
+  (Kunder). Sending newsletters requires Shopify Email or another configured email
+  app – the copy therefore never promises discounts or delivery frequency.
+
+  @param {string} id - Unique form id suffix
+  @param {string} [button_label] - Submit button label
+
+  @example
+  {% render 'newsletter-form', id: 'footer' %}
+{% enddoc %}
+{%- liquid
+  assign form_id = 'Newsletter-' | append: id
+  assign submit_label = 'newsletter.submit' | t
+  if button_label != blank
+    assign submit_label = button_label
+  endif
+-%}
+{%- form 'customer', id: form_id, class: 'newsletter-form' -%}
+  <input type="hidden" name="contact[tags]" value="newsletter">
+  {%- if form.posted_successfully? -%}
+    <p class="form-message form-message--success" role="status" tabindex="-1" autofocus>
+      {% render 'icon', name: 'check' %}
+      {{ 'newsletter.success' | t }}
+    </p>
+  {%- else -%}
+    <div class="newsletter-form__row">
+      <div class="field">
+        <label class="field__label" for="{{ form_id }}-email">{{ 'newsletter.email_label' | t }}</label>
+        <input
+          class="field__input"
+          type="email"
+          id="{{ form_id }}-email"
+          name="contact[email]"
+          autocomplete="email"
+          required
+          {% if form.errors %}aria-invalid="true" aria-describedby="{{ form_id }}-error"{% endif %}
+        >
+      </div>
+      <button type="submit" class="button">{{ submit_label | escape }}</button>
+    </div>
+    <label class="checkbox newsletter-form__consent">
+      <input type="checkbox" name="contact[accepts_marketing]" value="true" required>
+      <span>
+        {{ 'newsletter.consent' | t }}
+        {%- if shop.privacy_policy %} <a href="{{ shop.privacy_policy.url }}">{{ 'newsletter.privacy_link' | t }}</a>{% endif -%}
+      </span>
+    </label>
+    {%- if form.errors -%}
+      <p class="form-message form-message--error" id="{{ form_id }}-error" role="alert">
+        {%- if form.errors contains 'email' -%}
+          {{ 'newsletter.error_email' | t }}
+        {%- else -%}
+          {{ 'general.error' | t }}
+        {%- endif -%}
+      </p>
+    {%- endif -%}
+  {%- endif -%}
+{%- endform -%}

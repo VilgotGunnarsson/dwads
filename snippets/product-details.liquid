@@ -1,0 +1,116 @@
+{% doc %}
+  Product information accordions built from product metafields (namespace `custom`).
+
+  Safety rule: specifications, installation instructions and certifications are only
+  rendered when the merchant has set `custom.specs_verified` to true after checking the
+  data with the supplier. Warnings are always shown when present. Missing fields are
+  simply omitted – nothing is invented.
+
+  @param {product} product - Current product
+
+  @example
+  {% render 'product-details', product: product %}
+{% enddoc %}
+{%- liquid
+  assign m = product.metafields.custom
+  assign verified = m.specs_verified.value
+  assign has_specs = false
+  if verified
+    if m.materials != blank or m.dimensions != blank or m.installation_method != blank or m.compatible_surfaces != blank
+      assign has_specs = true
+    endif
+  endif
+-%}
+
+{%- if product.description != blank -%}
+  <details class="accordion" open>
+    <summary class="accordion__summary">
+      <span>{{ 'products.description' | t }}</span>
+      {% render 'icon', name: 'chevron', class: 'accordion__icon' %}
+    </summary>
+    <div class="accordion__content rte">{{ product.description }}</div>
+  </details>
+{%- endif -%}
+
+{%- if has_specs -%}
+  <details class="accordion">
+    <summary class="accordion__summary">
+      <span>{{ 'products.specifications' | t }}</span>
+      {% render 'icon', name: 'chevron', class: 'accordion__icon' %}
+    </summary>
+    <div class="accordion__content">
+      <dl class="spec-list">
+        {%- if m.materials != blank -%}
+          <div class="spec-list__row">
+            <dt>{{ 'products.spec_materials' | t }}</dt>
+            <dd>{{ m.materials.value | escape | newline_to_br }}</dd>
+          </div>
+        {%- endif -%}
+        {%- if m.dimensions != blank -%}
+          <div class="spec-list__row">
+            <dt>{{ 'products.spec_dimensions' | t }}</dt>
+            <dd>{{ m.dimensions.value | escape }}</dd>
+          </div>
+        {%- endif -%}
+        {%- if m.installation_method != blank -%}
+          <div class="spec-list__row">
+            <dt>{{ 'products.spec_installation_method' | t }}</dt>
+            <dd>{{ m.installation_method.value | escape }}</dd>
+          </div>
+        {%- endif -%}
+        {%- if m.compatible_surfaces != blank -%}
+          <div class="spec-list__row">
+            <dt>{{ 'products.spec_surfaces' | t }}</dt>
+            <dd>{{ m.compatible_surfaces.value | escape | newline_to_br }}</dd>
+          </div>
+        {%- endif -%}
+        {%- if m.certifications != blank -%}
+          <div class="spec-list__row">
+            <dt>{{ 'products.spec_certifications' | t }}</dt>
+            <dd>{{ m.certifications.value | escape | newline_to_br }}</dd>
+          </div>
+        {%- endif -%}
+      </dl>
+    </div>
+  </details>
+{%- endif -%}
+
+{%- if verified and m.installation_instructions != blank -%}
+  <details class="accordion">
+    <summary class="accordion__summary">
+      <span>{{ 'products.installation' | t }}</span>
+      {% render 'icon', name: 'chevron', class: 'accordion__icon' %}
+    </summary>
+    <div class="accordion__content rte">{{ m.installation_instructions | metafield_tag }}</div>
+  </details>
+{%- endif -%}
+
+{%- if m.package_contents != blank -%}
+  <details class="accordion">
+    <summary class="accordion__summary">
+      <span>{{ 'products.package_contents' | t }}</span>
+      {% render 'icon', name: 'chevron', class: 'accordion__icon' %}
+    </summary>
+    <div class="accordion__content">{{ m.package_contents.value | escape | newline_to_br }}</div>
+  </details>
+{%- endif -%}
+
+{%- if m.care_instructions != blank -%}
+  <details class="accordion">
+    <summary class="accordion__summary">
+      <span>{{ 'products.care' | t }}</span>
+      {% render 'icon', name: 'chevron', class: 'accordion__icon' %}
+    </summary>
+    <div class="accordion__content">{{ m.care_instructions.value | escape | newline_to_br }}</div>
+  </details>
+{%- endif -%}
+
+{%- if m.warnings != blank -%}
+  <div class="product-warning" role="note">
+    {% render 'icon', name: 'info' %}
+    <div>
+      <p class="product-warning__title">{{ 'products.warnings' | t }}</p>
+      <p>{{ m.warnings.value | escape | newline_to_br }}</p>
+    </div>
+  </div>
+{%- endif -%}

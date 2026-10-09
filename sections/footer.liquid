@@ -1,0 +1,129 @@
+<footer class="site-footer scheme-{{ section.settings.scheme }}">
+  <div class="container">
+    <div class="site-footer__grid">
+      {%- for block in section.blocks -%}
+        <div class="site-footer__col site-footer__col--{{ block.type }}" {{ block.shopify_attributes }}>
+          {%- case block.type -%}
+            {%- when 'brand' -%}
+              {% render 'wordmark', size: 'large' %}
+              {%- if block.settings.text != blank -%}
+                <div class="rte muted">{{ block.settings.text }}</div>
+              {%- endif -%}
+              {% render 'footer-extras', part: 'social' %}
+
+            {%- when 'menu' -%}
+              {%- if block.settings.heading != blank -%}
+                <h2 class="site-footer__heading">{{ block.settings.heading | escape }}</h2>
+              {%- endif -%}
+              {%- if block.settings.menu.links.size > 0 -%}
+                <ul class="site-footer__links" role="list">
+                  {%- for link in block.settings.menu.links -%}
+                    <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+                  {%- endfor -%}
+                </ul>
+              {%- elsif request.design_mode -%}
+                <p class="editor-hint">{{ 'footer.menu_missing_hint' | t }}</p>
+              {%- endif -%}
+
+            {%- when 'contact' -%}
+              {%- if block.settings.heading != blank -%}
+                <h2 class="site-footer__heading">{{ block.settings.heading | escape }}</h2>
+              {%- endif -%}
+              {% render 'footer-extras', part: 'company' %}
+              {%- if settings.company_hours != blank -%}
+                <p class="muted">{{ settings.company_hours | escape }}</p>
+              {%- endif -%}
+
+            {%- when 'newsletter' -%}
+              {%- if block.settings.heading != blank -%}
+                <h2 class="site-footer__heading">{{ block.settings.heading | escape }}</h2>
+              {%- endif -%}
+              {%- if block.settings.text != blank -%}
+                <div class="rte muted">{{ block.settings.text }}</div>
+              {%- endif -%}
+              {% render 'newsletter-form', id: block.id %}
+          {%- endcase -%}
+        </div>
+      {%- endfor -%}
+    </div>
+
+    <div class="site-footer__bottom">
+      <p class="site-footer__copy">
+        &copy; {{ 'now' | date: '%Y' }} {{ settings.company_name | default: settings.brand_name | default: shop.name | escape }}
+      </p>
+      {%- if shop.policies.size > 0 -%}
+        <ul class="site-footer__policies" role="list">
+          {%- for policy in shop.policies -%}
+            {%- if policy.body != blank -%}
+              <li><a href="{{ policy.url }}">{{ policy.title | escape }}</a></li>
+            {%- endif -%}
+          {%- endfor -%}
+          <li hidden data-privacy-preferences>
+            <button type="button" class="link-button">{{ 'footer.cookie_preferences' | t }}</button>
+          </li>
+        </ul>
+      {%- endif -%}
+      {% render 'footer-extras', part: 'payments' %}
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Sidfot",
+  "class": "section-footer",
+  "enabled_on": { "groups": ["footer"] },
+  "settings": [
+    {
+      "type": "select",
+      "id": "scheme",
+      "label": "Färgschema",
+      "options": [
+        { "value": "beige", "label": "Beige" },
+        { "value": "dark", "label": "Mörk" },
+        { "value": "surface", "label": "Benvit" }
+      ],
+      "default": "beige"
+    },
+    {
+      "type": "paragraph",
+      "content": "Policylänkarna hämtas automatiskt från Inställningar → Policyer. Företagsuppgifterna fylls i under Temainställningar → Företagsuppgifter."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "brand",
+      "name": "Varumärke",
+      "limit": 1,
+      "settings": [
+        { "type": "richtext", "id": "text", "label": "Text" }
+      ]
+    },
+    {
+      "type": "menu",
+      "name": "Meny",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Rubrik", "default": "Handla" },
+        { "type": "link_list", "id": "menu", "label": "Meny", "default": "footer" }
+      ]
+    },
+    {
+      "type": "contact",
+      "name": "Kontaktuppgifter",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Rubrik", "default": "Kontakt" }
+      ]
+    },
+    {
+      "type": "newsletter",
+      "name": "Nyhetsbrev",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Rubrik", "default": "Nyhetsbrev" },
+        { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Tips om barnsäkerhet och nyheter i sortimentet. Avsluta när du vill.</p>" }
+      ]
+    }
+  ]
+}
+{% endschema %}

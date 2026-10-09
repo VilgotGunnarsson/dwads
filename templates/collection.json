@@ -1,0 +1,23 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-collection",
+      "settings": {
+        "products_per_page": 16,
+        "columns": "4",
+        "show_image": true
+      }
+    },
+    "trust": {
+      "type": "trust-points",
+      "blocks": {
+        "t1": { "type": "point", "settings": { "icon": "lock", "title": "Säker betalning", "text": "Du betalar i Shopifys krypterade kassa." } },
+        "t2": { "type": "point", "settings": { "icon": "return", "title": "14 dagars ångerrätt", "text": "Gäller normalt vid köp på distans som konsument." } },
+        "t3": { "type": "point", "settings": { "icon": "chat", "title": "Fråga oss först", "text": "Osäker på om något passar? Hör av dig innan du beställer." } }
+      },
+      "block_order": ["t1", "t2", "t3"],
+      "settings": { "label": "Bra att veta", "scheme": "surface" }
+    }
+  },
+  "order": ["main", "trust"]
+}

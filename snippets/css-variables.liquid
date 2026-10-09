@@ -1,0 +1,61 @@
+{% doc %}
+  Outputs the design tokens (colors, type, spacing, radii) as CSS custom properties.
+  Driven by theme settings so the merchant can adjust them in the theme editor.
+
+  @example
+  {% render 'css-variables' %}
+{% enddoc %}
+{%- liquid
+  assign heading_font = settings.type_heading_font
+  assign body_font = settings.type_body_font
+  assign body_font_medium = body_font | font_modify: 'weight', '500'
+  assign body_font_bold = body_font | font_modify: 'weight', 'bold'
+  assign body_font_italic = body_font | font_modify: 'style', 'italic'
+  assign heading_font_italic = heading_font | font_modify: 'style', 'italic'
+  assign heading_scale = settings.heading_scale | divided_by: 100.0
+-%}
+{% style %}
+  {{ heading_font | font_face: font_display: 'swap' }}
+  {{ heading_font_italic | font_face: font_display: 'swap' }}
+  {{ body_font | font_face: font_display: 'swap' }}
+  {{ body_font_medium | font_face: font_display: 'swap' }}
+  {{ body_font_bold | font_face: font_display: 'swap' }}
+  {{ body_font_italic | font_face: font_display: 'swap' }}
+
+  :root {
+    --c-bg: {{ settings.color_background }};
+    --c-surface: {{ settings.color_surface }};
+    --c-beige: {{ settings.color_beige }};
+    --c-sage: {{ settings.color_sage }};
+    --c-text: {{ settings.color_text }};
+    --c-text-muted: {{ settings.color_text_muted }};
+    --c-border: {{ settings.color_border }};
+    --c-button: {{ settings.color_button }};
+    --c-button-text: {{ settings.color_button_text }};
+    --c-button-hover: {{ settings.color_button | color_darken: 6 }};
+    --c-accent: {{ settings.color_accent }};
+    --c-dark-bg: {{ settings.color_dark_background }};
+    --c-dark-text: {{ settings.color_dark_text }};
+    --c-focus: {{ settings.color_button }};
+    --c-overlay: {{ settings.color_text | color_modify: 'alpha', 0.35 }};
+    --c-error: #A2382B;
+    --c-success: #3F6B45;
+
+    --font-heading: {{ heading_font.family }}, {{ heading_font.fallback_families }};
+    --font-heading-weight: {{ heading_font.weight }};
+    --font-heading-style: {{ heading_font.style }};
+    --font-body: {{ body_font.family }}, {{ body_font.fallback_families }};
+    --font-body-weight: {{ body_font.weight }};
+    --font-body-weight-medium: {{ body_font_medium.weight | default: 500 }};
+    --font-body-weight-bold: {{ body_font_bold.weight | default: 700 }};
+
+    --heading-scale: {{ heading_scale }};
+    --text-base: {{ settings.body_size }}px;
+
+    --page-width: {{ settings.page_width }}px;
+    --radius-button: {{ settings.button_radius }}px;
+    --radius-media: {{ settings.media_radius }}px;
+    --radius-input: {{ settings.input_radius }}px;
+    --logo-width: {{ settings.logo_width }}px;
+  }
+{% endstyle %}

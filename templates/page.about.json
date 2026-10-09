@@ -1,0 +1,27 @@
+{
+  "sections": {
+    "main": { "type": "main-page", "settings": { "width": "narrow" } },
+    "idea": {
+      "type": "image-with-text",
+      "settings": {
+        "eyebrow": "Vår idé",
+        "heading": "Barnsäkerhet som passar in",
+        "text": "<p>Vi tycker att barnsäkerhet ska kännas omtänksam: genomtänkt, diskret och utan skrämselpropaganda.</p><p>Vi samlar ett litet urval produkter för skåp, lådor, dörrar och uttag och beskriver dem så tydligt vi kan, så att du kan välja det som passar ditt hem.</p>",
+        "shape": "arch",
+        "layout": "image-left",
+        "scheme": "base"
+      }
+    },
+    "principles": {
+      "type": "trust-points",
+      "blocks": {
+        "a1": { "type": "point", "settings": { "icon": "ruler", "title": "Tydlighet först", "text": "Vi visar bara uppgifter om mått, material och montering som är bekräftade." } },
+        "a2": { "type": "point", "settings": { "icon": "leaf", "title": "Ett litet urval", "text": "Hellre några genomtänkta produkter än en lång lista." } },
+        "a3": { "type": "point", "settings": { "icon": "chat", "title": "Fråga oss gärna", "text": "Vi hjälper dig hellre före köpet än efter." } }
+      },
+      "block_order": ["a1", "a2", "a3"],
+      "settings": { "label": "Det här står vi för", "scheme": "surface" }
+    }
+  },
+  "order": ["main", "idea", "principles"]
+}

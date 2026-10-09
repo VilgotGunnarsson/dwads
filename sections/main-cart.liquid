@@ -1,0 +1,60 @@
+<section class="cart-page section section--compact" data-cart-page data-section-id="{{ section.id }}">
+  <div class="container" data-cart-page-inner data-cart-count-value="{{ cart.item_count }}">
+    <h1 class="h1 page-title">{{ 'cart.title' | t }}</h1>
+    {%- if cart.item_count > 0 -%}
+      <div class="cart-page__grid">
+        <form action="{{ routes.cart_url }}" method="post" id="CartPageForm" data-cart-form novalidate>
+          {% render 'cart-lines', context: 'page' %}
+          <noscript>
+            <button type="submit" name="update" class="button button--secondary button--small">{{ 'cart.update' | t }}</button>
+          </noscript>
+          {%- if settings.cart_show_note -%}
+            <div class="field cart-note">
+              <label class="field__label" for="CartPageNote">{{ 'cart.note' | t }}</label>
+              <textarea class="field__input" id="CartPageNote" name="note" rows="3" data-cart-note>{{ cart.note }}</textarea>
+            </div>
+          {%- endif -%}
+          <p class="cart-error" role="alert" data-cart-error hidden></p>
+        </form>
+        <aside class="cart-summary cart-summary--page" aria-label="{{ 'cart.summary' | t }}">
+          {%- for discount in cart.cart_level_discount_applications -%}
+            <p class="cart-summary__row cart-line__discount">
+              <span>{{ discount.title | escape }}</span>
+              <span>−{{ discount.total_allocated_amount | money }}</span>
+            </p>
+          {%- endfor -%}
+          <p class="cart-summary__row cart-summary__total">
+            <span>{{ 'cart.subtotal' | t }}</span>
+            <span>{{ cart.total_price | money }}</span>
+          </p>
+          <p class="cart-summary__note">
+            {%- if cart.taxes_included -%}
+              {{ 'cart.taxes_included_shipping_at_checkout' | t }}
+            {%- else -%}
+              {{ 'cart.taxes_and_shipping_at_checkout' | t }}
+            {%- endif -%}
+          </p>
+          <button type="submit" name="checkout" form="CartPageForm" class="button button--full">
+            {% render 'icon', name: 'lock' %}
+            {{ 'cart.checkout' | t }}
+          </button>
+          {% render 'delivery-note' %}
+        </aside>
+      </div>
+    {%- else -%}
+      <div class="empty-state">
+        <p class="h3">{{ 'cart.empty' | t }}</p>
+        <p class="muted">{{ 'cart.empty_text' | t }}</p>
+        <a href="{{ routes.all_products_collection_url }}" class="button">{{ 'cart.continue_shopping' | t }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Varukorg",
+  "class": "section-main-cart",
+  "settings": []
+}
+{% endschema %}

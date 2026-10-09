@@ -1,0 +1,5 @@
+docs/
+README.md
+.theme-check.yml
+.gitignore
+tools/

@@ -1,0 +1,70 @@
+<section class="search-page section section--compact">
+  <div class="container">
+    <h1 class="h1 page-title">
+      {%- if search.performed -%}
+        {{ 'search.results_for' | t: terms: search.terms }}
+      {%- else -%}
+        {{ 'search.title' | t }}
+      {%- endif -%}
+    </h1>
+
+    <form action="{{ routes.search_url }}" method="get" role="search" class="search-form search-form--page">
+      <label class="visually-hidden" for="SearchPageInput">{{ 'search.label' | t }}</label>
+      {% render 'icon', name: 'search', class: 'search-form__icon' %}
+      <input type="search" id="SearchPageInput" name="q" class="search-form__input" value="{{ search.terms | escape }}" placeholder="{{ 'search.placeholder' | t }}">
+      <input type="hidden" name="options[prefix]" value="last">
+      <button type="submit" class="button button--small">{{ 'search.submit' | t }}</button>
+    </form>
+
+    {%- if search.performed -%}
+      {%- paginate search.results by 24 -%}
+        {%- if search.filters.size > 0 -%}
+          {%- assign clear_url = search.terms | url_encode | prepend: '?q=' | prepend: routes.search_url -%}
+          {% render 'facets', results: search, terms: search.terms, clear_url: clear_url %}
+        {%- endif -%}
+
+        {%- if search.results_count > 0 -%}
+          {%- assign products = search.results | where: 'object_type', 'product' -%}
+          {%- assign others = search.results | where: 'object_type', 'page' -%}
+          {%- assign articles = search.results | where: 'object_type', 'article' -%}
+          {%- if products.size > 0 -%}
+            <ul class="product-grid product-grid--4" role="list">
+              {%- for item in products -%}
+                <li>{% render 'product-card', product: item, heading_level: 'h2' %}</li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+          {%- assign texts = others | concat: articles -%}
+          {%- if texts.size > 0 -%}
+            <h2 class="h3 section-title">{{ 'search.pages' | t }}</h2>
+            <ul class="search-texts" role="list">
+              {%- for item in texts -%}
+                <li>
+                  <a href="{{ item.url }}" class="search-texts__link">
+                    <span class="search-texts__title">{{ item.title | escape }}</span>
+                    <span class="muted">{{ item.content | strip_html | truncatewords: 24 }}</span>
+                  </a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+          {% render 'pagination', paginate: paginate %}
+        {%- else -%}
+          <div class="empty-state">
+            <p class="h3">{{ 'search.no_results' | t: terms: search.terms }}</p>
+            <p class="muted">{{ 'search.no_results_text' | t }}</p>
+            <a class="button" href="{{ routes.all_products_collection_url }}">{{ 'collections.view_all_products' | t }}</a>
+          </div>
+        {%- endif -%}
+      {%- endpaginate -%}
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Sökresultat",
+  "class": "section-main-search",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,66 @@
+{%- comment -%}
+  Cart drawer. Rendered statically from layout/theme.liquid and re-rendered through the
+  Section Rendering API after every cart change (see assets/theme.js).
+  Shipping, discounts and final taxes are calculated by Shopify Checkout.
+{%- endcomment -%}
+<dialog class="drawer drawer--right cart-drawer" id="CartDrawer" aria-label="{{ 'cart.title' | t }}">
+  <div class="drawer__inner" data-cart-drawer-inner data-cart-count-value="{{ cart.item_count }}">
+    <div class="drawer__head">
+      <h2 class="h4">{{ 'cart.title' | t }}{% if cart.item_count > 0 %} <span class="muted">({{ cart.item_count }})</span>{% endif %}</h2>
+      <button type="button" class="icon-button" data-drawer-close>
+        {% render 'icon', name: 'close' %}
+        <span class="visually-hidden">{{ 'general.close' | t }}</span>
+      </button>
+    </div>
+
+    {%- if cart.item_count > 0 -%}
+      <form action="{{ routes.cart_url }}" method="post" id="CartDrawerForm" class="drawer__body" data-cart-form novalidate>
+        {% render 'cart-lines', context: 'drawer' %}
+        {%- if settings.cart_show_note -%}
+          <div class="field cart-note">
+            <label class="field__label" for="CartDrawerNote">{{ 'cart.note' | t }}</label>
+            <textarea class="field__input" id="CartDrawerNote" name="note" rows="2" data-cart-note>{{ cart.note }}</textarea>
+          </div>
+        {%- endif -%}
+        <p class="cart-error" role="alert" data-cart-error hidden></p>
+      </form>
+      <div class="drawer__foot cart-summary">
+        {%- for discount in cart.cart_level_discount_applications -%}
+          <p class="cart-summary__row cart-line__discount">
+            <span>{{ discount.title | escape }}</span>
+            <span>−{{ discount.total_allocated_amount | money }}</span>
+          </p>
+        {%- endfor -%}
+        <p class="cart-summary__row cart-summary__total">
+          <span>{{ 'cart.subtotal' | t }}</span>
+          <span>{{ cart.total_price | money }}</span>
+        </p>
+        <p class="cart-summary__note">
+          {%- if cart.taxes_included -%}
+            {{ 'cart.taxes_included_shipping_at_checkout' | t }}
+          {%- else -%}
+            {{ 'cart.taxes_and_shipping_at_checkout' | t }}
+          {%- endif -%}
+        </p>
+        <button type="submit" name="checkout" form="CartDrawerForm" class="button button--full">
+          {% render 'icon', name: 'lock' %}
+          {{ 'cart.checkout' | t }}
+        </button>
+        <a href="{{ routes.cart_url }}" class="link cart-summary__view">{{ 'cart.view_cart' | t }}</a>
+      </div>
+    {%- else -%}
+      <div class="drawer__body cart-empty">
+        <p class="h3">{{ 'cart.empty' | t }}</p>
+        <p class="muted">{{ 'cart.empty_text' | t }}</p>
+        <a href="{{ routes.all_products_collection_url }}" class="button">{{ 'cart.continue_shopping' | t }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</dialog>
+
+{% schema %}
+{
+  "name": "Varukorg (sidopanel)",
+  "settings": []
+}
+{% endschema %}

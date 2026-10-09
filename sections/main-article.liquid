@@ -1,0 +1,26 @@
+<article class="section section--compact">
+  <div class="container page-content page-content--narrow">
+    <p class="eyebrow"><a href="{{ blog.url }}">{{ blog.title | escape }}</a></p>
+    <h1 class="h1 page-title">{{ article.title | escape }}</h1>
+    <p class="muted">{{ article.published_at | time_tag: format: 'date' }}</p>
+    {%- if article.image -%}
+      <div class="article__media">
+        {%- assign article_alt = article.image.alt | default: article.title -%}
+        {{ article.image | image_url: width: 1600 | image_tag: widths: '600, 900, 1200, 1600', sizes: '(min-width: 990px) 800px, 100vw', loading: 'eager', alt: article_alt }}
+      </div>
+    {%- endif -%}
+    <div class="rte">{{ article.content }}</div>
+    <p><a class="link" href="{{ blog.url }}">{{ 'blog.back' | t }}</a></p>
+  </div>
+</article>
+<script type="application/ld+json">
+  {{ article | structured_data }}
+</script>
+
+{% schema %}
+{
+  "name": "Artikel",
+  "class": "section-main-article",
+  "settings": []
+}
+{% endschema %}

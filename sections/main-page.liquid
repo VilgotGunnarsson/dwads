@@ -1,0 +1,25 @@
+<section class="section section--compact">
+  <div class="container page-content page-content--{{ section.settings.width }}">
+    <h1 class="h1 page-title">{{ page.title | escape }}</h1>
+    <div class="rte">{{ page.content }}</div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Sidinnehåll",
+  "class": "section-main-page",
+  "settings": [
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Bredd",
+      "options": [
+        { "value": "narrow", "label": "Smal (lättläst)" },
+        { "value": "wide", "label": "Bred" }
+      ],
+      "default": "narrow"
+    }
+  ]
+}
+{% endschema %}

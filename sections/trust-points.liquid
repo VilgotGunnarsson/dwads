@@ -1,0 +1,86 @@
+{%- comment -%}
+  Short, factual trust messages. Defaults only state things that are true for any
+  Shopify store in Sweden (encrypted Shopify checkout, statutory right of withdrawal).
+  Merchants must not add unverifiable claims here.
+{%- endcomment -%}
+{%- if section.blocks.size > 0 -%}
+  <section class="trust scheme-{{ section.settings.scheme }}" aria-label="{{ section.settings.label | escape }}">
+    <div class="container">
+      <ul class="trust__list" role="list">
+        {%- for block in section.blocks -%}
+          <li class="trust__item" {{ block.shopify_attributes }}>
+            {% render 'icon', name: block.settings.icon %}
+            <div>
+              <p class="trust__title">{{ block.settings.title | escape }}</p>
+              {%- if block.settings.text != blank -%}<p class="trust__text">{{ block.settings.text | escape }}</p>{%- endif -%}
+            </div>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Trygghetspunkter",
+  "class": "section-trust",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Skriv bara sådant som stämmer och kan styrkas. Lova inte fri frakt, leveranstid eller certifieringar som inte är bekräftade."
+    },
+    { "type": "text", "id": "label", "label": "Tillgänglighetsetikett", "default": "Bra att veta" },
+    {
+      "type": "select",
+      "id": "scheme",
+      "label": "Färgschema",
+      "options": [
+        { "value": "base", "label": "Kräm" },
+        { "value": "surface", "label": "Benvit" },
+        { "value": "beige", "label": "Beige" },
+        { "value": "sage", "label": "Salvia" }
+      ],
+      "default": "surface"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "point",
+      "name": "Punkt",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Ikon",
+          "options": [
+            { "value": "lock", "label": "Lås" },
+            { "value": "return", "label": "Retur" },
+            { "value": "truck", "label": "Leverans" },
+            { "value": "chat", "label": "Pratbubbla" },
+            { "value": "ruler", "label": "Linjal" },
+            { "value": "leaf", "label": "Blad" },
+            { "value": "info", "label": "Info" },
+            { "value": "check", "label": "Bock" }
+          ],
+          "default": "check"
+        },
+        { "type": "text", "id": "title", "label": "Rubrik", "default": "Rubrik" },
+        { "type": "text", "id": "text", "label": "Text" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trygghetspunkter",
+      "blocks": [
+        { "type": "point", "settings": { "icon": "ruler", "title": "Tydlig produktinformation", "text": "Mått, material och montering redovisas när uppgifterna är bekräftade." } },
+        { "type": "point", "settings": { "icon": "lock", "title": "Säker betalning", "text": "Du betalar i Shopifys krypterade kassa." } },
+        { "type": "point", "settings": { "icon": "return", "title": "14 dagars ångerrätt", "text": "Gäller normalt vid köp på distans som konsument." } },
+        { "type": "point", "settings": { "icon": "chat", "title": "Fråga oss först", "text": "Osäker på om något passar? Hör av dig innan du beställer." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

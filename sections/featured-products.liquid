@@ -1,0 +1,80 @@
+{%- liquid
+  assign collection = section.settings.collection
+  assign limit = section.settings.limit
+  assign has_products = false
+  if collection != blank and collection.products_count > 0
+    assign has_products = true
+  endif
+-%}
+{%- if has_products or request.design_mode -%}
+  <section class="section scheme-{{ section.settings.scheme }}" aria-labelledby="Heading-{{ section.id }}">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+          <h2 class="h2" id="Heading-{{ section.id }}">{{ section.settings.heading | default: collection.title | escape }}</h2>
+          {%- if section.settings.text != blank -%}<div class="rte muted section-head__text">{{ section.settings.text }}</div>{%- endif -%}
+        </div>
+        {%- if has_products and section.settings.show_view_all -%}
+          <a class="link link--arrow" href="{{ collection.url }}">{{ 'collections.view_all' | t }} {% render 'icon', name: 'arrow' %}</a>
+        {%- endif -%}
+      </div>
+      <ul class="product-grid product-grid--{{ section.settings.columns }}" role="list">
+        {%- if has_products -%}
+          {%- for product in collection.products limit: limit -%}
+            <li>{% render 'product-card', product: product %}</li>
+          {%- endfor -%}
+        {%- else -%}
+          {%- for i in (1..4) -%}
+            <li>{% render 'product-card', product: blank %}</li>
+          {%- endfor -%}
+        {%- endif -%}
+      </ul>
+      {%- unless has_products -%}
+        <p class="editor-hint">{{ 'sections.featured_products_hint' | t }}</p>
+      {%- endunless -%}
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Utvalda produkter",
+  "class": "section-featured-products",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Överrubrik", "default": "Utvalt" },
+    { "type": "text", "id": "heading", "label": "Rubrik", "default": "Utvalt för hemmet" },
+    {
+      "type": "paragraph",
+      "content": "Undvik påståenden som ”bästsäljare” eller ”populärast” om de inte stöds av verklig försäljningsdata. ”Utvalt för dig” är ett neutralt alternativ."
+    },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "collection", "id": "collection", "label": "Kollektion" },
+    { "type": "range", "id": "limit", "label": "Antal produkter", "min": 2, "max": 12, "step": 1, "default": 4 },
+    {
+      "type": "select",
+      "id": "columns",
+      "label": "Kolumner på dator",
+      "options": [
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" }
+      ],
+      "default": "4"
+    },
+    { "type": "checkbox", "id": "show_view_all", "label": "Visa länk till kollektionen", "default": true },
+    {
+      "type": "select",
+      "id": "scheme",
+      "label": "Färgschema",
+      "options": [
+        { "value": "base", "label": "Kräm" },
+        { "value": "surface", "label": "Benvit" },
+        { "value": "beige", "label": "Beige" },
+        { "value": "sage", "label": "Salvia" }
+      ],
+      "default": "base"
+    }
+  ],
+  "presets": [{ "name": "Utvalda produkter" }]
+}
+{% endschema %}

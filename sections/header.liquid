@@ -1,0 +1,173 @@
+{%- liquid
+  assign menu = section.settings.menu
+  if settings.cart_type == 'drawer'
+    assign cart_attrs = 'data-cart-open aria-haspopup="dialog"'
+  endif
+-%}
+<header class="site-header{% if section.settings.sticky %} site-header--sticky{% endif %}" data-header>
+  <div class="container site-header__inner">
+    <div class="site-header__start">
+      <button type="button" class="icon-button site-header__menu-toggle" data-drawer-open="MenuDrawer" aria-haspopup="dialog" aria-controls="MenuDrawer">
+        {% render 'icon', name: 'menu' %}
+        <span class="visually-hidden">{{ 'header.open_menu' | t }}</span>
+      </button>
+      <div class="site-header__brand">{% render 'wordmark' %}</div>
+    </div>
+
+    {%- if menu.links.size > 0 -%}
+      <nav class="site-nav" aria-label="{{ 'header.main_navigation' | t }}">
+        <ul class="site-nav__list" role="list">
+          {%- for link in menu.links -%}
+            <li class="site-nav__item">
+              {%- if link.links.size > 0 -%}
+                <details class="site-nav__dropdown" data-auto-close>
+                  <summary class="site-nav__link{% if link.child_active or link.active %} is-active{% endif %}">
+                    {{ link.title | escape }}
+                    {% render 'icon', name: 'chevron' %}
+                  </summary>
+                  <ul class="site-nav__submenu" role="list">
+                    <li><a class="site-nav__sublink" href="{{ link.url }}">{{ 'header.view_all' | t: title: link.title | escape }}</a></li>
+                    {%- for child in link.links -%}
+                      <li>
+                        <a class="site-nav__sublink" href="{{ child.url }}"{% if child.current %} aria-current="page"{% endif %}>
+                          {{- child.title | escape -}}
+                        </a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                </details>
+              {%- else -%}
+                <a class="site-nav__link{% if link.active %} is-active{% endif %}" href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>
+                  {{- link.title | escape -}}
+                </a>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+      </nav>
+    {%- endif -%}
+
+    <div class="site-header__actions">
+      <a href="{{ routes.search_url }}" class="icon-button" data-drawer-open="SearchModal" aria-haspopup="dialog" aria-controls="SearchModal">
+        {% render 'icon', name: 'search' %}
+        <span class="visually-hidden">{{ 'search.open' | t }}</span>
+      </a>
+      {%- if shop.customer_accounts_enabled -%}
+        <a href="{{ routes.account_url }}" class="icon-button site-header__account">
+          {% render 'icon', name: 'account' %}
+          <span class="visually-hidden">{% if customer %}{{ 'header.account' | t }}{% else %}{{ 'header.log_in' | t }}{% endif %}</span>
+        </a>
+      {%- endif -%}
+      <a href="{{ routes.cart_url }}" class="icon-button cart-toggle" {{ cart_attrs }}>
+        {% render 'icon', name: 'bag' %}
+        <span class="visually-hidden">{{ 'cart.title' | t }},</span>
+        <span class="cart-count{% if cart.item_count == 0 %} is-empty{% endif %}" data-cart-count>
+          <span aria-hidden="true">{{ cart.item_count }}</span>
+          <span class="visually-hidden">{{ 'cart.item_count' | t: count: cart.item_count }}</span>
+        </span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<dialog class="drawer drawer--left" id="MenuDrawer" aria-label="{{ 'header.menu' | t }}">
+  <div class="drawer__inner">
+    <div class="drawer__head">
+      {% render 'wordmark', link: false %}
+      <button type="button" class="icon-button" data-drawer-close>
+        {% render 'icon', name: 'close' %}
+        <span class="visually-hidden">{{ 'general.close' | t }}</span>
+      </button>
+    </div>
+    <nav class="drawer__body mobile-nav" aria-label="{{ 'header.main_navigation' | t }}">
+      <ul role="list">
+        {%- for link in menu.links -%}
+          <li>
+            {%- if link.links.size > 0 -%}
+              <details>
+                <summary class="mobile-nav__link">
+                  {{ link.title | escape }}
+                  {% render 'icon', name: 'chevron' %}
+                </summary>
+                <ul role="list" class="mobile-nav__sub">
+                  <li><a href="{{ link.url }}">{{ 'header.view_all' | t: title: link.title | escape }}</a></li>
+                  {%- for child in link.links -%}
+                    <li><a href="{{ child.url }}"{% if child.current %} aria-current="page"{% endif %}>{{ child.title | escape }}</a></li>
+                  {%- endfor -%}
+                </ul>
+              </details>
+            {%- else -%}
+              <a class="mobile-nav__link" href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title | escape }}</a>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+    <div class="drawer__foot">
+      {%- if shop.customer_accounts_enabled -%}
+        <a class="link" href="{{ routes.account_url }}">{% if customer %}{{ 'header.account' | t }}{% else %}{{ 'header.log_in' | t }}{% endif %}</a>
+      {%- endif -%}
+      {%- if settings.company_email != blank -%}
+        <a class="link" href="mailto:{{ settings.company_email | escape }}">{{ settings.company_email | escape }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</dialog>
+
+<dialog class="search-modal" id="SearchModal" aria-label="{{ 'search.title' | t }}">
+  <div class="search-modal__inner container">
+    <form action="{{ routes.search_url }}" method="get" role="search" class="search-form" data-predictive-search-form>
+      <label class="visually-hidden" for="SearchModalInput">{{ 'search.label' | t }}</label>
+      {% render 'icon', name: 'search', class: 'search-form__icon' %}
+      <input
+        type="search"
+        id="SearchModalInput"
+        name="q"
+        class="search-form__input"
+        placeholder="{{ 'search.placeholder' | t }}"
+        autocomplete="off"
+        autocorrect="off"
+        spellcheck="false"
+        {% if settings.predictive_search %}
+          role="combobox"
+          aria-expanded="false"
+          aria-controls="PredictiveSearchResults"
+          aria-autocomplete="list"
+          data-predictive-search-input
+        {% endif %}
+      >
+      <input type="hidden" name="options[prefix]" value="last">
+      <button type="button" class="icon-button" data-drawer-close>
+        {% render 'icon', name: 'close' %}
+        <span class="visually-hidden">{{ 'general.close' | t }}</span>
+      </button>
+    </form>
+    {%- if settings.predictive_search -%}
+      <div id="PredictiveSearchResults" class="predictive-search" data-predictive-search-results></div>
+      <p class="visually-hidden" role="status" aria-live="polite" data-predictive-search-status></p>
+    {%- endif -%}
+  </div>
+</dialog>
+
+{% schema %}
+{
+  "name": "Sidhuvud",
+  "class": "section-header",
+  "enabled_on": { "groups": ["header"] },
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Meny",
+      "default": "main-menu",
+      "info": "Skapa menyn under Innehåll → Menyer. Rekommenderad struktur finns i docs/SETUP.md."
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky",
+      "label": "Fäst sidhuvudet vid skrollning",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

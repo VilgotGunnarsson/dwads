@@ -1,0 +1,45 @@
+<section class="section newsletter scheme-{{ section.settings.scheme }}" aria-labelledby="Heading-{{ section.id }}">
+  <div class="container newsletter__inner">
+    <div>
+      {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      <h2 class="h2" id="Heading-{{ section.id }}">{{ section.settings.heading | escape }}</h2>
+      {%- if section.settings.text != blank -%}<div class="rte">{{ section.settings.text }}</div>{%- endif -%}
+    </div>
+    {% render 'newsletter-form', id: section.id %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Nyhetsbrev",
+  "class": "section-newsletter",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Adresserna sparas som kunder med marknadsföringssamtycke i Shopify. För att skicka nyhetsbrev behövs Shopify Email eller en annan e-postapp. Lova inte rabatter eller utskick som inte är planerade."
+    },
+    { "type": "text", "id": "eyebrow", "label": "Överrubrik", "default": "Nyhetsbrev" },
+    { "type": "text", "id": "heading", "label": "Rubrik", "default": "Tips för ett tryggare hem" },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Få råd om barnsäkerhet och besked när nya produkter kommer in. Du kan avsluta prenumerationen när du vill.</p>"
+    },
+    {
+      "type": "select",
+      "id": "scheme",
+      "label": "Färgschema",
+      "options": [
+        { "value": "base", "label": "Kräm" },
+        { "value": "surface", "label": "Benvit" },
+        { "value": "beige", "label": "Beige" },
+        { "value": "sage", "label": "Salvia" },
+        { "value": "dark", "label": "Mörk" }
+      ],
+      "default": "dark"
+    }
+  ],
+  "presets": [{ "name": "Nyhetsbrev" }]
+}
+{% endschema %}
