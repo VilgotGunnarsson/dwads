@@ -3,6 +3,3 @@ README.md
 .theme-check.yml
 .gitignore
 tools/
-.agents/
-.claude/
-skills-lock.json
