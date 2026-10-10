@@ -1,5 +1,5 @@
 /*
- * Varsam theme – storefront interactions.
+ * Lugnhem theme – storefront interactions.
  * Progressive enhancement only: every feature has a working no-JS fallback
  * (native forms, links and <details>). No third-party dependencies.
  *

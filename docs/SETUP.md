@@ -6,10 +6,10 @@ settings and shows nothing it cannot verify. Work through it top to bottom; the
 
 ## 1. Theme
 
-The theme has been uploaded as **"Varsam (utkast)"** – an *unpublished* theme. The live theme
+The theme has been uploaded as **"Lugnhem (utkast)"** – an *unpublished* theme. The live theme
 (Horizon) is unchanged.
 
-1. **Online Store → Themes → Varsam (utkast) → Customize** to preview and edit.
+1. **Online Store → Themes → Lugnhem (utkast) → Customize** to preview and edit.
 2. **Theme settings** (paintbrush icon): brand name, colours, fonts, delivery/returns text,
    company details, social links.
 3. Publish only when the launch checklist is complete (**… → Publish**).
@@ -53,7 +53,7 @@ product can appear in two categories by adding a second tag (e.g. a magnetic loc
 Each has a Swedish description and SEO title/description. Still to do: add a collection image
 to each (it is used on the category tiles and collection pages).
 
-Already linked in the Varsam theme: the homepage category tiles, the room-by-room guide and the
+Already linked in the Lugnhem theme: the homepage category tiles, the room-by-room guide and the
 safety-guide checklist. Still to do in the theme editor once real products are active:
 - **Startsida → Utvalda produkter:** pick a collection (the section stays hidden until it has products).
 - **Startsida → Startpaket:** pick the bundle product (hidden until chosen).
@@ -69,7 +69,7 @@ Created (or updated) and published, each with a Swedish SEO title and descriptio
 | Kontakt | `/pages/contact` | `page.contact` | Existing page, intro updated; form and company details are automatic. |
 | Om oss | `/pages/om-oss` | `page.about` | **Body left empty for you** – write your own story. Do not invent history, founders or credentials. |
 
-The `guide`, `faq` and `about` templates exist only in the Varsam theme; in another theme these
+The `guide`, `faq` and `about` templates exist only in the Lugnhem theme; in another theme these
 pages fall back to the default page layout.
 
 Already linked: hero secondary button and "Hela säkerhetsguiden" → Säkerhetsguide; announcement

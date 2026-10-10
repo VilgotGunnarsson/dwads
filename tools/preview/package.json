@@ -1,5 +1,5 @@
 {
-  "name": "varsam-preview-harness",
+  "name": "lugnhem-preview-harness",
   "private": true,
   "description": "Developer-only offline renderer for the theme with mocked Shopify data. Not part of the theme upload.",
   "type": "module",

@@ -1,4 +1,4 @@
-# Varsam – Shopify theme (working name)
+# Lugnhem – Shopify theme
 
 A focused, Swedish-language Online Store 2.0 theme for a Sweden-first baby-proofing store,
 built for **demand validation**: a small curated catalogue, honest product presentation and
@@ -11,8 +11,8 @@ native Shopify functionality only (no paid apps, no frameworks).
 |---|---|
 | Store | `4y12ic-wj.myshopify.com` (password-protected) |
 | Live theme | Horizon (unchanged) |
-| This theme | Uploaded as **unpublished** "Varsam (utkast)" – preview in Online Store → Themes |
-| Working brand | **Varsam** – alternatives and rationale in [docs/BRAND.md](docs/BRAND.md) |
+| This theme | Uploaded as **unpublished** "Lugnhem (utkast)" – preview in Online Store → Themes |
+| Brand | **Lugnhem** (chosen 2026-10-10; lugnhem.se was available at that time) – rationale in [docs/BRAND.md](docs/BRAND.md) |
 
 ## Documentation
 
@@ -82,7 +82,7 @@ Key behaviours:
   `*.myshopify.com`, and the store is password-protected. Liquid was therefore exercised with
   mocked Shopify objects; Shopify-specific output (checkout, `structured_data`, image CDN,
   real filters/search, form posting, theme-editor live updates) must be checked in
-  **Online Store → Themes → Varsam (utkast) → Preview** before publishing.
+  **Online Store → Themes → Lugnhem (utkast) → Preview** before publishing.
 - **Checkout, payments, shipping rates, taxes, emails** – not configured yet (admin-only).
 - **Real devices / screen readers** – automated checks only; do a manual pass with VoiceOver/TalkBack.
 

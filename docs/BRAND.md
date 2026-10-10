@@ -1,16 +1,26 @@
-# Brand – working name and identity
+# Brand – Lugnhem
 
-> **Status:** working name only. Nothing here has been checked for trademark conflicts,
-> company-name conflicts (Bolagsverket) or domain availability. Do that before launch –
-> see [LAUNCH-CHECKLIST.md](LAUNCH-CHECKLIST.md).
+> **Status:** brand name chosen by the owner on 2026-10-10. `lugnhem.se` and `lugnhem.com` were
+> available when checked that day (not registered by us – register them promptly). No trademark,
+> company-name (Bolagsverket) or social-handle check has been done yet – see
+> [LAUNCH-CHECKLIST.md](LAUNCH-CHECKLIST.md).
 
-## Name proposals
+## Name
 
-| Name | Meaning / rationale | Watch-outs |
-|---|---|---|
-| **Varsam** *(selected working name)* | Swedish adjective: *careful, gentle, considerate*. Signals calm care rather than fear. Short, easy to say, works as a wordmark, and fits the "quiet confidence" art direction. | Common Swedish word → may be hard to register as a trademark on its own; other businesses may already use it. Check PRV/EUIPO and Bolagsverket. |
-| **Lugnhem** | *lugn* (calm) + *hem* (home): the parent's peace of mind. Reads as a native compound and is more distinctive than a single dictionary word. | Slightly longer; check whether similar names exist in the home/interior sector. |
-| **Värn** | *protection / safeguard*. Short, Nordic and memorable. | Can feel stern for a baby brand; generic word with likely registration difficulties; the "ä" complicates domains (consider `varn` + IDN). |
+**Lugnhem** – *lugn* (calm) + *hem* (home): the parent's peace of mind, not fear. No å/ä/ö, so
+the domain is spelled exactly as the name is said, and it is easy to say on the phone. A web
+search on 2026-10-10 found no company called Lugnhem (not a registry check).
+
+### Names considered
+
+| Name | Outcome |
+|---|---|
+| **Lugnhem** | ✅ Chosen. lugnhem.se + .com available at check time. |
+| Varsam | ❌ Dropped: varsam.se taken; a "Varsam AB" appears in a Västerås business listing; `varsam-sverige.se` rejected (hyphen, traffic leaking to varsam.se, confusion risk). |
+| Varsamhem | Runner-up; varsamhem.se was available, but customers could still type varsam.se. |
+| Tryggvrå, Stillhem, Hemvrå, Lugnvrå, Mjukhörn | .se available at check time; not chosen. |
+| Hemlugn, Ombonat | .se taken. |
+| Värn | Too stern; generic word. |
 
 ## Where the name lives (change it in one place)
 
@@ -19,7 +29,7 @@
 - **Shopify admin → Settings → General → Store name.** Currently *"Min butik 2"*. This is what
   Shopify Checkout, order emails and the browser tab on checkout show. **Change it before launch.**
 - Template copy deliberately avoids repeating the brand name, so no JSON template needs editing
-  when the name changes. Verify with `grep -rn "Varsam" templates sections snippets` (should return nothing).
+  when the name changes. Verify with `grep -rn "Lugnhem" templates sections snippets` (should return nothing).
 - The theme's internal name (`config/settings_schema.json` → `theme_info`) is developer-facing only.
 
 ## Wordmark

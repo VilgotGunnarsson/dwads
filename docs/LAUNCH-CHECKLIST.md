@@ -13,7 +13,7 @@ is done in this repository; items marked ☐ in A need real assets or content.
 - [x] No fake reviews/ratings/urgency; demo products blocked from purchase; specs gated by `custom.specs_verified`
 - [x] Payment icons only for enabled methods; delivery text only when configured
 - [x] Theme Check: 0 offenses (recommended config); offline browser test suite: 176/176
-- [x] Uploaded to Shopify as unpublished theme "Varsam (utkast)"
+- [x] Uploaded to Shopify as unpublished theme "Lugnhem (utkast)"
 - [ ] Replace placeholder imagery: hero, "Så väljer vi", category tiles, about page (see BRAND.md)
 - [ ] Upload logo/favicon/share image (optional – the text wordmark works without)
 - [ ] Review all Swedish copy in the theme editor and adjust tone to your voice

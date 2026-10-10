@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Varsam theme – base styles
+   Lugnhem theme – base styles
    Design tokens live in snippets/css-variables.liquid (theme settings).
    Breakpoints: 750px (tablet), 990px (desktop). Mobile first.
    ========================================================================== */
@@ -694,6 +694,29 @@ textarea.field__input {
 .cart-count.is-empty {
   display: none;
 }
+@media (max-width: 989px) {
+  /* Mobile: menu button | centred wordmark | actions as three grid cells. */
+  .site-header__start {
+    display: contents;
+  }
+  .site-header__menu-toggle {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+  }
+}
+@media (max-width: 400px) {
+  .site-header__inner {
+    gap: var(--space-2);
+  }
+  .site-header .wordmark__text {
+    font-size: 1.4rem;
+  }
+  .site-header .wordmark__mark {
+    width: 1.35rem;
+    height: 1.35rem;
+  }
+}
 
 @media (min-width: 990px) {
   .site-header__inner {
@@ -790,6 +813,7 @@ textarea.field__input {
 .wordmark__mark {
   width: 1.6rem;
   height: 1.6rem;
+  flex-shrink: 0;
   color: var(--c-button);
 }
 .scheme-dark .wordmark__mark {

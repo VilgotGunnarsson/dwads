@@ -431,7 +431,7 @@ function pageContext(url) {
   const p = decodeURIComponent(u.pathname);
   const base = { template: { name: 'index', suffix: null }, request: { page_type: 'index', design_mode: u.searchParams.has('editor'), locale: { iso_code: 'sv' }, origin: `http://localhost:${PORT}`, path: p } };
   const set = (name, suffix, extra = {}) => ({ ...base, template: { name, suffix }, request: { ...base.request, page_type: name }, ...extra });
-  if (p === '/') return { file: 'index', ctx: set('index', null, { page_title: 'Barnsäkerhet för hem med omtanke' }) };
+  if (p === '/') return { file: 'index', ctx: set('index', null, { page_title: 'Barnsäkerhet för ett lugnare hem' }) };
   if (p.startsWith('/products/')) {
     const product = products.find((x) => x.url === p) || products[0];
     return { file: 'product', ctx: set('product', null, { product, collection, page_title: product.title }) };

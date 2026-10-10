@@ -1,9 +1,9 @@
 {
-  "current": "Varsam",
+  "current": "Lugnhem",
   "presets": {
-    "Varsam": {
-      "brand_name": "Varsam",
-      "brand_tagline": "Barnsäkerhet för hem med omtanke",
+    "Lugnhem": {
+      "brand_name": "Lugnhem",
+      "brand_tagline": "Barnsäkerhet för ett lugnare hem",
       "type_heading_font": "fraunces_n4",
       "type_body_font": "instrument_sans_n4"
     }

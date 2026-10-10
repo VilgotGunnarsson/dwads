@@ -1,9 +1,9 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Varsam",
+    "theme_name": "Lugnhem",
     "theme_version": "1.0.0",
-    "theme_author": "Varsam (arbetsnamn)",
+    "theme_author": "Lugnhem",
     "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
     "theme_support_url": "https://help.shopify.com"
   },
@@ -18,13 +18,13 @@
         "type": "text",
         "id": "brand_name",
         "label": "Varumärkesnamn",
-        "default": "Varsam"
+        "default": "Lugnhem"
       },
       {
         "type": "text",
         "id": "brand_tagline",
         "label": "Slogan",
-        "default": "Barnsäkerhet för hem med omtanke"
+        "default": "Barnsäkerhet för ett lugnare hem"
       },
       {
         "type": "image_picker",
