@@ -12,7 +12,7 @@ is done in this repository; items marked ☐ in A need real assets or content.
       404, blog/article, password, FAQ, contact, about, safety guide + checklist templates
 - [x] No fake reviews/ratings/urgency; demo products blocked from purchase; specs gated by `custom.specs_verified`
 - [x] Payment icons only for enabled methods; delivery text only when configured
-- [x] Theme Check: 0 offenses (recommended config); offline browser test suite: 169/169
+- [x] Theme Check: 0 offenses (recommended config); offline browser test suite: 176/176
 - [x] Uploaded to Shopify as unpublished theme "Varsam (utkast)"
 - [ ] Replace placeholder imagery: hero, "Så väljer vi", category tiles, about page (see BRAND.md)
 - [ ] Upload logo/favicon/share image (optional – the text wordmark works without)
@@ -26,9 +26,11 @@ is done in this repository; items marked ☐ in A need real assets or content.
 - [ ] Market: Sweden; shipping zone + real rates
 - [ ] Payment provider activated; test order placed and refunded
 - [ ] Dropshipping supplier app connected; order routing and tracking tested end to end
-- [ ] Collections created and linked in the theme editor
-- [ ] Pages created with the correct templates (guide, FAQ, contact, about)
-- [ ] Main menu and footer menu
+- [x] Collections created, published and linked in the theme
+- [ ] Collection images added
+- [x] Pages created with the correct templates (guide, FAQ, contact, about)
+- [ ] "Om oss" page text written (body intentionally left empty)
+- [x] Main menu and footer menu
 - [ ] Product metafield definitions created
 - [ ] Real products created with verified data; `specs_verified` set only where checked
 - [ ] All `demo` products deleted or converted

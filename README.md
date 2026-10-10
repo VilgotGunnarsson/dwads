@@ -74,7 +74,7 @@ Key behaviours:
 | JS syntax | `node --check assets/theme.js` | OK |
 | JSON | settings, locale and all templates parsed | OK |
 | Shopify upload | `themeCreate` from zip | Processed without errors (Shopify validates Liquid/schema on upload) |
-| Offline render + browser tests | `tools/preview`: `node server.mjs` + `node test.mjs` | **169/169 passed** – 16 pages × mobile 375 px / desktop 1440 px: no horizontal overflow, no console errors, one `h1`, `lang="sv"`, forbidden-claims scan; axe-core WCAG 2.1 A/AA on 7 pages: 0 violations; variant switching, sold-out state, add to cart → drawer, quantity update, removal → empty state, Esc/focus return, cart page, predictive search + keyboard, menu drawer, checklist persistence, demo safeguards, recommendations |
+| Offline render + browser tests | `tools/preview`: `node server.mjs` + `node test.mjs` | **176/176 passed** – 17 pages × mobile 375 px / desktop 1440 px: no horizontal overflow, no console errors, one `h1`, `lang="sv"`, forbidden-claims scan; axe-core WCAG 2.1 A/AA on 7 pages: 0 violations; variant switching, sold-out state, add to cart → drawer, quantity update, removal → empty state, Esc/focus return, cart page, predictive search + keyboard, menu drawer, checklist persistence, demo safeguards, recommendations |
 
 ### Not tested (and why)
 

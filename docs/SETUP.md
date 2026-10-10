@@ -34,40 +34,50 @@ Developers can also run `shopify theme dev --store 4y12ic-wj.myshopify.com` loca
   VAT – enable *"Include sales tax in product price"*. The theme then shows "Inklusive moms".
   If the supplier ships from outside the EU, review **IOSS**/import VAT with your accountant.
 
-## 3. Collections (Products → Collections)
+## 3. Collections (Products → Collections) — ✅ done 2026-10-10
 
-Create these (automated collections using `product_type` work well):
+Created and published to the Online Store as **automated collections**. A product joins a
+collection when its *product type* matches **or** it has the matching `kategori-…` tag – so a
+product can appear in two categories by adding a second tag (e.g. a magnetic lock tagged
+`kategori-skap-lador` also shows under Skåp & lådor).
 
-| Title | Suggested handle | Condition |
+| Title | Handle | Product type **or** tag |
 |---|---|---|
-| Lås & spärrar | `las-och-sparrar` | Product type = Lås & spärrar |
-| Kant- & hörnskydd | `kant-och-hornskydd` | Product type = Kant- & hörnskydd |
-| Skåp & lådor | `skap-och-lador` | Product type = Skåp & lådor |
-| Dörrar & klämskydd | `dorrar-och-klamskydd` | Product type = Dörrar & klämskydd |
-| Eluttag | `eluttag` | Product type = Eluttag |
-| Startpaket | `startpaket` | Product type = Startpaket |
+| Lås & spärrar | `las-och-sparrar` | Lås & spärrar / `kategori-las-sparrar` |
+| Kant- & hörnskydd | `kant-och-hornskydd` | Kant- & hörnskydd / `kategori-kant-hornskydd` |
+| Skåp & lådor | `skap-och-lador` | Skåp & lådor / `kategori-skap-lador` |
+| Dörrar & klämskydd | `dorrar-och-klamskydd` | Dörrar & klämskydd / `kategori-dorrar` |
+| Eluttag | `eluttag` | Eluttag / `kategori-eluttag` |
+| Startpaket | `startpaket` | Startpaket / `kategori-startpaket` |
 
-Add a Swedish description and image to each, then in the theme editor:
-- **Startsida → Kategorier:** pick the collection in each block.
+Each has a Swedish description and SEO title/description. Still to do: add a collection image
+to each (it is used on the category tiles and collection pages).
+
+Already linked in the Varsam theme: the homepage category tiles, the room-by-room guide and the
+safety-guide checklist. Still to do in the theme editor once real products are active:
 - **Startsida → Utvalda produkter:** pick a collection (the section stays hidden until it has products).
 - **Startsida → Startpaket:** pick the bundle product (hidden until chosen).
-- **Guide rum för rum / Checklista:** optionally link blocks to collections.
 
-## 4. Pages (Online Store → Pages)
+## 4. Pages (Online Store → Pages) — ✅ done 2026-10-10
 
-Create the pages and choose the **Theme template** shown (right-hand panel):
+Created (or updated) and published, each with a Swedish SEO title and description:
 
-| Page | Template | Content |
-|---|---|---|
-| Säkerhetsguide | `page.guide` | Short intro in the page body; sections come from the template. |
-| Vanliga frågor | `page.faq` | Optional intro; questions are edited in the theme editor. |
-| Kontakt | `page.contact` | Optional intro; the form and company details are automatic. |
-| Om oss | `page.about` | Write your own story – do not invent history, founders or credentials. |
+| Page | URL | Template | Content |
+|---|---|---|---|
+| Säkerhetsguide | `/pages/sakerhetsguide` | `page.guide` | Intro in the page body; rooms, stages and checklist come from the template. |
+| Vanliga frågor | `/pages/vanliga-fragor` | `page.faq` | Intro in the body; questions are edited in the theme editor. |
+| Kontakt | `/pages/contact` | `page.contact` | Existing page, intro updated; form and company details are automatic. |
+| Om oss | `/pages/om-oss` | `page.about` | **Body left empty for you** – write your own story. Do not invent history, founders or credentials. |
 
-Then link them: **Startsida → Hero → Sekundär knapp** → Säkerhetsguide, and
-**Guide rum för rum → Länk** → Säkerhetsguide.
+The `guide`, `faq` and `about` templates exist only in the Varsam theme; in another theme these
+pages fall back to the default page layout.
 
-## 5. Navigation (Online Store → Navigation)
+Already linked: hero secondary button and "Hela säkerhetsguiden" → Säkerhetsguide; announcement
+bar, FAQ and product "Passar den hemma hos mig?" → Kontakt.
+
+## 5. Navigation (Online Store → Navigation) — ✅ done 2026-10-10
+
+Menus are shared by all themes, so the live (password-protected) Horizon theme shows them too.
 
 - **Main menu (`main-menu`):** Handla (with the six collections as sub-items) · Startpaket ·
   Säkerhetsguide · Om oss · Kontakt.

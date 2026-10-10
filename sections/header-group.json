@@ -6,7 +6,8 @@
       "type": "announcement-bar",
       "settings": {
         "text": "Frågor om en produkt innan du beställer? Vi hjälper dig gärna.",
-        "link_text": "Kontakta oss"
+        "link_text": "Kontakta oss",
+        "link": "shopify://pages/contact"
       }
     },
     "header": {
@@ -17,5 +18,8 @@
       }
     }
   },
-  "order": ["announcement", "header"]
+  "order": [
+    "announcement",
+    "header"
+  ]
 }

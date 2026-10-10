@@ -158,23 +158,40 @@ const collection = {
   default_sort_by: 'manual',
 };
 const emptyCollection = { ...collection, title: 'Eluttag', handle: 'eluttag', url: '/collections/eluttag', products: [], products_count: 0, all_products_count: 0, filters: [], featured_image: null };
-const collectionsList = [collection, emptyCollection];
+// Mirrors the real store's automated collections (handles must match the live store).
+const categoryDefs = [
+  ['Lås & spärrar', 'las-och-sparrar'],
+  ['Kant- & hörnskydd', 'kant-och-hornskydd'],
+  ['Skåp & lådor', 'skap-och-lador'],
+  ['Dörrar & klämskydd', 'dorrar-och-klamskydd'],
+  ['Startpaket', 'startpaket'],
+];
+const categoryCollections = categoryDefs.map(([title, handle]) => {
+  const items = products.filter((p) => p.type === title);
+  return { ...collection, title, handle, url: `/collections/${handle}`, products: items, products_count: items.length, all_products_count: items.length, featured_image: items[0]?.featured_media || null };
+});
+const collectionsList = [collection, emptyCollection, ...categoryCollections];
 
+// Mirrors the live store's menus (main-menu, footer).
 const linklists = {
   'main-menu': { links: [
     { title: 'Handla', url: '/collections/all', links: [
-      { title: 'Lås & spärrar', url: '/collections/barnsakerhet', links: [] },
-      { title: 'Kant- & hörnskydd', url: '/collections/barnsakerhet', links: [] },
-      { title: 'Eluttag', url: '/collections/eluttag', links: [] }] },
-    { title: 'Startpaket', url: '/collections/barnsakerhet', links: [] },
+      { title: 'Lås & spärrar', url: '/collections/las-och-sparrar', links: [] },
+      { title: 'Kant- & hörnskydd', url: '/collections/kant-och-hornskydd', links: [] },
+      { title: 'Skåp & lådor', url: '/collections/skap-och-lador', links: [] },
+      { title: 'Dörrar & klämskydd', url: '/collections/dorrar-och-klamskydd', links: [] },
+      { title: 'Eluttag', url: '/collections/eluttag', links: [] },
+      { title: 'Startpaket', url: '/collections/startpaket', links: [] }] },
+    { title: 'Startpaket', url: '/collections/startpaket', links: [] },
     { title: 'Säkerhetsguide', url: '/pages/sakerhetsguide', links: [] },
     { title: 'Om oss', url: '/pages/om-oss', links: [] },
-    { title: 'Kontakt', url: '/pages/kontakt', links: [] }] },
+    { title: 'Kontakt', url: '/pages/contact', links: [] }] },
   footer: { links: [
     { title: 'Alla produkter', url: '/collections/all' },
     { title: 'Säkerhetsguide', url: '/pages/sakerhetsguide' },
     { title: 'Vanliga frågor', url: '/pages/vanliga-fragor' },
-    { title: 'Kontakt', url: '/pages/kontakt' }] },
+    { title: 'Kontakt', url: '/pages/contact' },
+    { title: 'Sök', url: '/search' }] },
 };
 
 const policies = [
@@ -360,6 +377,8 @@ function resolveSetting(def, value) {
       return products.find((p) => p.handle === value) || null;
     case 'link_list':
       return linklists[value] || null;
+    case 'url':
+      return String(value).replace(/^shopify:\/\/(pages|collections|products|blogs)\//, '/$1/').replace(/^shopify:\/\/collections$/, '/collections');
     default:
       return value;
   }
@@ -418,7 +437,10 @@ function pageContext(url) {
     return { file: 'product', ctx: set('product', null, { product, collection, page_title: product.title }) };
   }
   if (p === '/collections/eluttag') return { file: 'collection', ctx: set('collection', null, { collection: emptyCollection, page_title: 'Eluttag' }) };
-  if (p.startsWith('/collections/') && p !== '/collections') return { file: 'collection', ctx: set('collection', null, { collection, page_title: collection.title }) };
+  if (p.startsWith('/collections/') && p !== '/collections') {
+    const found = collectionsList.find((c) => c.url === p) || collection;
+    return { file: 'collection', ctx: set('collection', null, { collection: found, page_title: found.title }) };
+  }
   if (p === '/collections') return { file: 'list-collections', ctx: set('list-collections', null, { page_title: 'Alla kategorier' }) };
   if (p === '/cart') return { file: 'cart', ctx: set('cart', null, { page_title: 'Varukorg' }) };
   if (p === '/search') {
@@ -430,8 +452,8 @@ function pageContext(url) {
   const pages = {
     '/pages/sakerhetsguide': ['page', 'guide', 'Säkerhetsguide', '<p>Små barn upptäcker hemmet snabbt. Här är en allmän genomgång av vad många föräldrar ser över – rum för rum och i takt med barnet.</p>'],
     '/pages/vanliga-fragor': ['page', 'faq', 'Vanliga frågor', ''],
-    '/pages/kontakt': ['page', 'contact', 'Kontakta oss', ''],
-    '/pages/om-oss': ['page', 'about', 'Om oss', '<p>Utkast: skriv några meningar om varför du startade butiken.</p>'],
+    '/pages/contact': ['page', 'contact', 'Kontakt', '<p>Har du frågor om en produkt, din beställning eller en retur? Skriv till oss så återkommer vi så snart vi kan.</p>'],
+    '/pages/om-oss': ['page', 'about', 'Om oss', ''],
   };
   if (pages[p]) {
     const [name, suffix, title, content] = pages[p];

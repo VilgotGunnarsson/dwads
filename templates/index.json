@@ -10,36 +10,123 @@
         "button_label_2": "Läs säkerhetsguiden",
         "shape": "arch",
         "layout": "text-left",
-        "scheme": "base"
+        "scheme": "base",
+        "button_link_2": "shopify://pages/sakerhetsguide"
       }
     },
     "trust": {
       "type": "trust-points",
       "blocks": {
-        "t1": { "type": "point", "settings": { "icon": "ruler", "title": "Tydlig produktinformation", "text": "Mått, material och montering redovisas när uppgifterna är bekräftade." } },
-        "t2": { "type": "point", "settings": { "icon": "lock", "title": "Säker betalning", "text": "Du betalar i Shopifys krypterade kassa." } },
-        "t3": { "type": "point", "settings": { "icon": "return", "title": "14 dagars ångerrätt", "text": "Gäller normalt vid köp på distans som konsument." } },
-        "t4": { "type": "point", "settings": { "icon": "chat", "title": "Fråga oss först", "text": "Osäker på om något passar? Hör av dig innan du beställer." } }
+        "t1": {
+          "type": "point",
+          "settings": {
+            "icon": "ruler",
+            "title": "Tydlig produktinformation",
+            "text": "Mått, material och montering redovisas när uppgifterna är bekräftade."
+          }
+        },
+        "t2": {
+          "type": "point",
+          "settings": {
+            "icon": "lock",
+            "title": "Säker betalning",
+            "text": "Du betalar i Shopifys krypterade kassa."
+          }
+        },
+        "t3": {
+          "type": "point",
+          "settings": {
+            "icon": "return",
+            "title": "14 dagars ångerrätt",
+            "text": "Gäller normalt vid köp på distans som konsument."
+          }
+        },
+        "t4": {
+          "type": "point",
+          "settings": {
+            "icon": "chat",
+            "title": "Fråga oss först",
+            "text": "Osäker på om något passar? Hör av dig innan du beställer."
+          }
+        }
       },
-      "block_order": ["t1", "t2", "t3", "t4"],
-      "settings": { "label": "Bra att veta", "scheme": "surface" }
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4"
+      ],
+      "settings": {
+        "label": "Bra att veta",
+        "scheme": "surface"
+      }
     },
     "categories": {
       "type": "category-list",
       "blocks": {
-        "c1": { "type": "category", "settings": { "title": "Lås & spärrar", "text": "För skåp, lådor och kylskåp" } },
-        "c2": { "type": "category", "settings": { "title": "Kant- & hörnskydd", "text": "Mjukare kanter på bord och hyllor" } },
-        "c3": { "type": "category", "settings": { "title": "Skåp & lådor", "text": "Spärrar som inte syns utifrån" } },
-        "c4": { "type": "category", "settings": { "title": "Dörrar & klämskydd", "text": "Dörrstopp och fingerskydd" } },
-        "c5": { "type": "category", "settings": { "title": "Eluttag", "text": "Skydd för uttag i barnets höjd" } },
-        "c6": { "type": "category", "settings": { "title": "Startpaket", "text": "Samlade paket för att komma igång" } }
+        "c1": {
+          "type": "category",
+          "settings": {
+            "title": "Lås & spärrar",
+            "text": "För skåp, lådor och kylskåp",
+            "collection": "las-och-sparrar"
+          }
+        },
+        "c2": {
+          "type": "category",
+          "settings": {
+            "title": "Kant- & hörnskydd",
+            "text": "Mjukare kanter på bord och hyllor",
+            "collection": "kant-och-hornskydd"
+          }
+        },
+        "c3": {
+          "type": "category",
+          "settings": {
+            "title": "Skåp & lådor",
+            "text": "Spärrar som inte syns utifrån",
+            "collection": "skap-och-lador"
+          }
+        },
+        "c4": {
+          "type": "category",
+          "settings": {
+            "title": "Dörrar & klämskydd",
+            "text": "Dörrstopp och fingerskydd",
+            "collection": "dorrar-och-klamskydd"
+          }
+        },
+        "c5": {
+          "type": "category",
+          "settings": {
+            "title": "Eluttag",
+            "text": "Skydd för uttag i barnets höjd",
+            "collection": "eluttag"
+          }
+        },
+        "c6": {
+          "type": "category",
+          "settings": {
+            "title": "Startpaket",
+            "text": "Samlade paket för att komma igång",
+            "collection": "startpaket"
+          }
+        }
       },
-      "block_order": ["c1", "c2", "c3", "c4", "c5", "c6"],
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6"
+      ],
       "settings": {
         "eyebrow": "Sortiment",
         "heading": "Handla efter behov",
-        "link_label": "Alla kategorier",
-        "scheme": "base"
+        "link_label": "Alla produkter",
+        "scheme": "base",
+        "link": "shopify://collections/all"
       }
     },
     "featured": {
@@ -56,18 +143,56 @@
     "guide": {
       "type": "room-guide",
       "blocks": {
-        "r1": { "type": "step", "settings": { "title": "Kök", "text": "<p>Lås skåp och lådor med rengöringsmedel, vassa föremål och glas. Tänk på lådor i barnets höjd och på ugnsluckan.</p>" } },
-        "r2": { "type": "step", "settings": { "title": "Badrum", "text": "<p>Förvara läkemedel, kosmetika och rengöringsmedel utom räckhåll eller i låsta skåp.</p>" } },
-        "r3": { "type": "step", "settings": { "title": "Vardagsrum", "text": "<p>Skydda vassa hörn på soffbord och hyllor, och se över eluttag som barnet når från golvet.</p>" } },
-        "r4": { "type": "step", "settings": { "title": "Dörrar och hall", "text": "<p>Dörrstopp och klämskydd minskar risken för klämda fingrar i dörrar som slår igen.</p>" } }
+        "r1": {
+          "type": "step",
+          "settings": {
+            "title": "Kök",
+            "text": "<p>Lås skåp och lådor med rengöringsmedel, vassa föremål och glas. Tänk på lådor i barnets höjd och på ugnsluckan.</p>",
+            "collection": "skap-och-lador",
+            "link_label": "Spärrar för skåp och lådor"
+          }
+        },
+        "r2": {
+          "type": "step",
+          "settings": {
+            "title": "Badrum",
+            "text": "<p>Förvara läkemedel, kosmetika och rengöringsmedel utom räckhåll eller i låsta skåp.</p>",
+            "collection": "skap-och-lador",
+            "link_label": "Lås för badrumsskåp"
+          }
+        },
+        "r3": {
+          "type": "step",
+          "settings": {
+            "title": "Vardagsrum",
+            "text": "<p>Skydda vassa hörn på soffbord och hyllor, och se över eluttag som barnet når från golvet.</p>",
+            "collection": "kant-och-hornskydd",
+            "link_label": "Kant- och hörnskydd"
+          }
+        },
+        "r4": {
+          "type": "step",
+          "settings": {
+            "title": "Dörrar och hall",
+            "text": "<p>Dörrstopp och klämskydd minskar risken för klämda fingrar i dörrar som slår igen.</p>",
+            "collection": "dorrar-och-klamskydd",
+            "link_label": "Dörrstopp och klämskydd"
+          }
+        }
       },
-      "block_order": ["r1", "r2", "r3", "r4"],
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4"
+      ],
       "settings": {
         "eyebrow": "Rum för rum",
         "heading": "Var börjar man?",
         "text": "<p>De flesta hem behöver inte allt på en gång. Börja där barnet faktiskt rör sig och komplettera i takt med att det upptäcker mer.</p>",
         "link_label": "Hela säkerhetsguiden",
-        "scheme": "surface"
+        "scheme": "surface",
+        "link": "shopify://pages/sakerhetsguide"
       }
     },
     "bundle": {
@@ -93,17 +218,53 @@
     "faq": {
       "type": "faq",
       "blocks": {
-        "q1": { "type": "question", "settings": { "question": "När skickas min beställning?", "answer": "<p>Leveranstiden beror på produkt och leverantör. När en uppskattning finns visas den på produktsidan, och tillgängliga fraktalternativ visas i kassan innan du betalar.</p>" } },
-        "q2": { "type": "question", "settings": { "question": "Vad kostar frakten?", "answer": "<p>Fraktkostnaden räknas ut i kassan utifrån din beställning och leveransadress, innan du bekräftar köpet.</p>" } },
-        "q3": { "type": "question", "settings": { "question": "Hur vet jag om en produkt passar mina skåp eller dörrar?", "answer": "<p>Titta på mått, monteringssätt och lämpliga ytor på produktsidan. Saknas uppgiften eller är du osäker – kontakta oss innan du beställer så hjälper vi dig.</p>" } },
-        "q4": { "type": "question", "settings": { "question": "Kan jag ångra mitt köp?", "answer": "<p>Som konsument har du normalt 14 dagars ångerrätt vid köp på distans. Hur du går till väga står i vår returpolicy.</p>" } },
-        "q5": { "type": "question", "settings": { "question": "Vilka betalsätt kan jag använda?", "answer": "<p>De betalsätt som är tillgängliga för din beställning visas i kassan.</p>" } }
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "När skickas min beställning?",
+            "answer": "<p>Leveranstiden beror på produkt och leverantör. När en uppskattning finns visas den på produktsidan, och tillgängliga fraktalternativ visas i kassan innan du betalar.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Vad kostar frakten?",
+            "answer": "<p>Fraktkostnaden räknas ut i kassan utifrån din beställning och leveransadress, innan du bekräftar köpet.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "Hur vet jag om en produkt passar mina skåp eller dörrar?",
+            "answer": "<p>Titta på mått, monteringssätt och lämpliga ytor på produktsidan. Saknas uppgiften eller är du osäker – kontakta oss innan du beställer så hjälper vi dig.</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "Kan jag ångra mitt köp?",
+            "answer": "<p>Som konsument har du normalt 14 dagars ångerrätt vid köp på distans. Hur du går till väga står i vår returpolicy.</p>"
+          }
+        },
+        "q5": {
+          "type": "question",
+          "settings": {
+            "question": "Vilka betalsätt kan jag använda?",
+            "answer": "<p>De betalsätt som är tillgängliga för din beställning visas i kassan.</p>"
+          }
+        }
       },
-      "block_order": ["q1", "q2", "q3", "q4", "q5"],
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5"
+      ],
       "settings": {
         "eyebrow": "Frågor och svar",
         "heading": "Vanliga frågor",
-        "text": "<p>Hittar du inte svaret? Kontakta oss så hjälper vi dig.</p>",
+        "text": "<p>Hittar du inte svaret? <a href=\"/pages/contact\">Kontakta oss</a> så hjälper vi dig.</p>",
         "scheme": "base"
       }
     },
@@ -117,5 +278,15 @@
       }
     }
   },
-  "order": ["hero", "trust", "categories", "featured", "guide", "bundle", "promise", "faq", "newsletter"]
+  "order": [
+    "hero",
+    "trust",
+    "categories",
+    "featured",
+    "guide",
+    "bundle",
+    "promise",
+    "faq",
+    "newsletter"
+  ]
 }
