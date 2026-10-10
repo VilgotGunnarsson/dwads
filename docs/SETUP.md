@@ -84,7 +84,10 @@ Menus are shared by all themes, so the live (password-protected) Horizon theme s
 - **Footer menu (`footer`):** Alla produkter · Säkerhetsguide · Vanliga frågor · Kontakt.
   Policies are linked automatically in the footer.
 
-## 6. Metafields
+## 6. Metafields — ✅ done 2026-10-10
+
+All 14 product metafield definitions below were created (namespace `custom`, pinned so they
+show on every product page in admin).
 
 Create the product metafield definitions listed in [PRODUCT-DATA.md](PRODUCT-DATA.md)
 (**Settings → Custom data → Products**). Remember: specifications only show when

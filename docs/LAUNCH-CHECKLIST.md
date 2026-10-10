@@ -25,13 +25,13 @@ is done in this repository; items marked ☐ in A need real assets or content.
 - [ ] Currency SEK, Swedish money format, prices including VAT
 - [ ] Market: Sweden; shipping zone + real rates
 - [ ] Payment provider activated; test order placed and refunded
-- [ ] Dropshipping supplier app connected; order routing and tracking tested end to end
+- [ ] Dropshipping supplier app connected (DSers installed 2026-10-10); order routing and tracking tested end to end
 - [x] Collections created, published and linked in the theme
 - [ ] Collection images added
 - [x] Pages created with the correct templates (guide, FAQ, contact, about)
 - [ ] "Om oss" page text written (body intentionally left empty)
 - [x] Main menu and footer menu
-- [ ] Product metafield definitions created
+- [x] Product metafield definitions created (14, namespace `custom`, pinned)
 - [ ] Real products created with verified data; `specs_verified` set only where checked
 - [ ] All `demo` products deleted or converted
 - [ ] Search & Discovery filters
