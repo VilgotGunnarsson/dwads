@@ -17,7 +17,7 @@ native Shopify functionality only (no paid apps, no frameworks).
 ## Documentation
 
 - [docs/SETUP.md](docs/SETUP.md) – step-by-step Shopify admin configuration
-- [docs/PRODUCT-DATA.md](docs/PRODUCT-DATA.md) – metafields, demo products, bundles, supplier info list
+- [docs/PRODUCT-DATA.md](docs/PRODUCT-DATA.md) – metafields, the imported products, bundles, supplier info list
 - [docs/SOURCING-ALIEXPRESS.md](docs/SOURCING-ALIEXPRESS.md) – first-pass AliExpress shortlist per category (unverified)
 - [docs/BRAND.md](docs/BRAND.md) – names, wordmark, colour/type tokens, image requirements
 - [docs/LEGAL-DRAFTS.md](docs/LEGAL-DRAFTS.md) – Swedish policy drafts (**not legal advice**)

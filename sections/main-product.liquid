@@ -74,7 +74,8 @@
             {%- unless product.has_only_default_variant -%}
               <div class="variant-picker" data-variant-picker>
                 {%- for option in product.options_with_values -%}
-                  <fieldset class="variant-picker__option">
+                  {%- comment -%} Single-value options (e.g. "Ships From") stay in the DOM so the picker JS can read them, but are not shown. {%- endcomment -%}
+                  <fieldset class="variant-picker__option"{% if option.values.size == 1 %} hidden{% endif %}>
                     <legend class="variant-picker__legend">
                       {{ option.name | escape }}: <span data-option-value="{{ forloop.index0 }}">{{ option.selected_value | escape }}</span>
                     </legend>

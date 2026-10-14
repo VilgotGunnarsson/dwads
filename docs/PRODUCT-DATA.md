@@ -43,31 +43,54 @@ real review app, display its widget only for genuine reviews.
   requires that a price-reduction reference is the **lowest price in the previous 30 days**.
 - **Images:** see the image requirements in [BRAND.md](BRAND.md). Write alt text in Swedish.
 
-## Demo products currently in the store
+## Products in the store (imported via DSers, 2026-10-14)
 
-Eight **DRAFT** products were created for structure only. All are tagged `demo` and
-`demo-ej-till-salu`, have vendor "DEMO – ej till salu", price 0,00 kr, tracked inventory at 0
-with overselling denied, and descriptions starting with "DEMO – EJ TILL SALU".
+Eight AliExpress products were pushed to Shopify with DSers, then rewritten in Swedish. All are
+**DRAFT** (not visible) until prices are approved and samples have been checked. The eight `demo`
+drafts were deleted the same day.
 
-| Handle | Product type |
-|---|---|
-| `demo-magnetisk-ladsparr` | Lås & spärrar |
-| `demo-kylskapslas` | Lås & spärrar |
-| `demo-skapsparr-tryckknapp` | Skåp & lådor |
-| `demo-hornskydd` | Kant- & hörnskydd |
-| `demo-kantlist` | Kant- & hörnskydd |
-| `demo-dorrstopp-klamskydd` | Dörrar & klämskydd |
-| `demo-uttagsskydd` | Eluttag |
-| `demo-startpaket-kok` | Startpaket |
+| Handle | Title | Product type (collection) | Extra tag | Variants (option) |
+|---|---|---|---|---|
+| `magnetiskt-barnlas` | Magnetiskt barnlås för skåp och lådor | Lås & spärrar | `kategori-skap-lador` | Antal: 4 lås + 1 nyckel … 20 lås + 5 nycklar |
+| `flexibel-skapsparr` | Flexibel spärr för skåp och lådor | Skåp & lådor | – | Antal: 10–60 st |
+| `kylskapslas` | Kylskåpslås med tryckknapp | Lås & spärrar | – | Antal: 1, 3, 6 st |
+| `sparr-for-dorrhandtag` | Spärr för dörrhandtag | Dörrar & klämskydd | `kategori-las-sparrar` | Färg: Vit · Skickas från: Kina |
+| `klamskydd-dorr` | Klämskydd för dörr i mjuk skumplast | Dörrar & klämskydd | – | Antal: 3, 6 st |
+| `uttagsskydd-vridlock` | Uttagsskydd med vridlock | Eluttag | – | Antal: 1, 5, 6 st · Skickas från: Kina |
+| `kantlist-genomskinlig` | Genomskinlig kantlist, 3 m | Kant- & hörnskydd | – | Längd: 3 m |
+| `hornskydd` | Hörnskydd för bord och möbler | Kant- & hörnskydd | – | Modell: 15 supplier values, still in English |
 
-Safeguards in the theme for anything tagged `demo`:
-- "Demoprodukt" badge on cards and product page.
-- No add-to-cart button (a notice is shown instead), including in the bundle section.
-- `noindex` meta tag and no Product structured data.
+What was set on every product:
+- Swedish title, handle, description (what it does, mounting, "Bra att veta"), SEO title and
+  description, vendor `Lugnhem`, tag `aliexpress` (for filtering in admin).
+- `custom.warnings` – Swedish safety warnings (magnets, small parts, adhesive, supervision).
+  **Compare them with the manufacturer's warnings on the packaging when the samples arrive.**
+- `custom.complementary_products` – hand-picked cross-sells ("Passar bra med").
+- Compare-at prices removed (DSers had set compare-at = price).
+- Option names and values translated. Variant IDs were kept (renamed in place), so the DSers
+  mapping should be unaffected – check one product under DSers → *Mapping* to be sure.
 
-**To turn a demo into a real product:** replace title, description, images, price and
-metafields with verified data → remove both `demo` tags → set inventory/fulfilment for the
-supplier → set status *Active* and publish to the Online Store. Or simply delete the demos.
+Deliberately **not** set: specification metafields (`materials`, `dimensions`, …) and
+`specs_verified`. The supplier data contradicts itself (e.g. the edge strip is described as both
+silicone and PVC, "300 mm" and "300 cm"), so nothing is shown until checked on a sample.
+Claims from the supplier listings such as "3M", "food grade", "100 % safe" and "Universal 99 %
+fit" were not used.
+
+Open points:
+- **Prices** are still DSers' purchase price (= cost). Set the approved prices before activating.
+- **Hörnskydd** variant names ("Heart-window", "Upgraded-round", …) need someone who can see the
+  images to name them in Swedish; most variants have under 30 in stock.
+- **Uttagsskydd** is described by the supplier as a *"French spring model"*. French (type E) and
+  Swedish (type F) sockets differ – test a sample in a Swedish socket before selling.
+- Several variants have very low supplier stock (magnetic 8+2: 2, strap 20 st: 6, foam guard:
+  10–16). DSers syncs stock, and Shopify shows "Slutsåld" automatically when it reaches 0.
+- Delivery to Sweden quoted in DSers: AliExpress Selection Standard, about US$1.99 per item,
+  7–16 days (one product up to 20 days). Add a delivery text only once confirmed.
+
+### Demo safeguards (kept in the theme)
+
+Anything tagged `demo` still gets a "Demoprodukt" badge, no add-to-cart button, `noindex` and no
+Product structured data – useful if you ever add placeholder products again.
 
 ## Bundles / starter kits
 

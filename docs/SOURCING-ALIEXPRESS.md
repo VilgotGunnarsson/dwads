@@ -17,7 +17,7 @@
    No documents → don't list the product.
 4. Take your own product photos from the samples (better for the brand, and avoids image-rights
    problems with seller photos).
-5. Only then replace a `demo` draft with the real product (see PRODUCT-DATA.md).
+5. Only then activate the product in Shopify (see PRODUCT-DATA.md for what was imported).
 
 Prefer clean, neutral designs (white, grey, transparent) that fit the Scandinavian look;
 skip cartoon/animal designs.

@@ -33,7 +33,9 @@ is done in this repository; items marked ☐ in A need real assets or content.
 - [x] Main menu and footer menu
 - [x] Product metafield definitions created (14, namespace `custom`, pinned)
 - [ ] Real products created with verified data; `specs_verified` set only where checked
-- [ ] All `demo` products deleted or converted
+      (8 imported via DSers and rewritten in Swedish 2026-10-14 – still drafts; prices, samples
+      and corner-protector variant names pending, see PRODUCT-DATA.md)
+- [x] All `demo` products deleted (2026-10-14)
 - [ ] Search & Discovery filters
 - [ ] Policies filled in **in Swedish** (refund, privacy, terms, shipping, contact)
 - [ ] Theme settings → Företagsuppgifter (name, org.nr, address, email)

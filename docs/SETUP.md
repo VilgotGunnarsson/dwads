@@ -153,7 +153,7 @@ email are required to be easily accessible under the Swedish e-commerce act (e-h
 ## 15. Going live
 
 1. Complete the [launch checklist](LAUNCH-CHECKLIST.md).
-2. Remove or convert all `demo` products.
+2. Remove or convert all `demo` products (done 2026-10-14), then set the real products to *Active*.
 3. Publish the theme.
 4. **Online Store → Preferences:** remove the storefront password (requires an active plan).
 5. Connect your domain (Settings → Domains) and submit the sitemap
