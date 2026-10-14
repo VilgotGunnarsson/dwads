@@ -54,9 +54,13 @@ Each has a Swedish description and SEO title/description. Still to do: add a col
 to each (it is used on the category tiles and collection pages).
 
 Already linked in the Lugnhem theme: the homepage category tiles, the room-by-room guide and the
-safety-guide checklist. Still to do in the theme editor once real products are active:
-- **Startsida → Utvalda produkter:** pick a collection (the section stays hidden until it has products).
-- **Startsida → Startpaket:** pick the bundle product (hidden until chosen).
+safety-guide checklist. Category tiles use the collection image, or the first product's image
+until one is added.
+- **Startsida → Utvalda produkter:** set to four hand-picked products (magnetic lock, corner
+  protectors, door-handle lock, fridge lock). Change them under *Produkter* in the section; if
+  the list is empty the section falls back to the chosen collection, and hides if that is empty.
+- **Startsida → Startpaket:** pick the bundle product (hidden until chosen). The *Startpaket*
+  collection is still empty – create a bundle product first (see PRODUCT-DATA.md).
 
 ## 4. Pages (Online Store → Pages) — ✅ done 2026-10-10
 

@@ -1,9 +1,19 @@
 {%- liquid
   assign collection = section.settings.collection
+  assign picked = section.settings.products
   assign limit = section.settings.limit
   assign has_products = false
-  if collection != blank and collection.products_count > 0
+  assign use_picked = false
+  if picked != blank and picked.count > 0
     assign has_products = true
+    assign use_picked = true
+  elsif collection != blank and collection.products_count > 0
+    assign has_products = true
+  endif
+  if collection != blank
+    assign view_all_url = collection.url
+  else
+    assign view_all_url = routes.all_products_collection_url
   endif
 -%}
 {%- if has_products or request.design_mode -%}
@@ -16,11 +26,15 @@
           {%- if section.settings.text != blank -%}<div class="rte muted section-head__text">{{ section.settings.text }}</div>{%- endif -%}
         </div>
         {%- if has_products and section.settings.show_view_all -%}
-          <a class="link link--arrow" href="{{ collection.url }}">{{ 'collections.view_all' | t }} {% render 'icon', name: 'arrow' %}</a>
+          <a class="link link--arrow" href="{{ view_all_url }}">{{ 'collections.view_all' | t }} {% render 'icon', name: 'arrow' %}</a>
         {%- endif -%}
       </div>
       <ul class="product-grid product-grid--{{ section.settings.columns }}" role="list">
-        {%- if has_products -%}
+        {%- if use_picked -%}
+          {%- for product in picked limit: limit -%}
+            <li>{% render 'product-card', product: product %}</li>
+          {%- endfor -%}
+        {%- elsif has_products -%}
           {%- for product in collection.products limit: limit -%}
             <li>{% render 'product-card', product: product %}</li>
           {%- endfor -%}
@@ -49,7 +63,14 @@
       "content": "Undvik påståenden som ”bästsäljare” eller ”populärast” om de inte stöds av verklig försäljningsdata. ”Utvalt för dig” är ett neutralt alternativ."
     },
     { "type": "richtext", "id": "text", "label": "Text" },
-    { "type": "collection", "id": "collection", "label": "Kollektion" },
+    {
+      "type": "product_list",
+      "id": "products",
+      "label": "Produkter",
+      "limit": 12,
+      "info": "Valda produkter visas i den här ordningen. Lämna tomt för att i stället visa produkter från kollektionen nedan."
+    },
+    { "type": "collection", "id": "collection", "label": "Kollektion", "info": "Används om inga produkter är valda ovan. Länken ”Visa alla” går hit (annars till alla produkter)." },
     { "type": "range", "id": "limit", "label": "Antal produkter", "min": 2, "max": 12, "step": 1, "default": 4 },
     {
       "type": "select",
@@ -61,7 +82,7 @@
       ],
       "default": "4"
     },
-    { "type": "checkbox", "id": "show_view_all", "label": "Visa länk till kollektionen", "default": true },
+    { "type": "checkbox", "id": "show_view_all", "label": "Visa länk ”Visa alla”", "default": true },
     {
       "type": "select",
       "id": "scheme",

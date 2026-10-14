@@ -375,6 +375,12 @@ function resolveSetting(def, value) {
       return collectionsList.find((c) => c.handle === value) || null;
     case 'product':
       return products.find((p) => p.handle === value) || null;
+    case 'product_list': {
+      const list = (Array.isArray(value) ? value : []).map((h) => products.find((p) => p.handle === h)).filter(Boolean);
+      if (!list.length) return null;
+      list.count = list.length;
+      return list;
+    }
     case 'link_list':
       return linklists[value] || null;
     case 'url':

@@ -45,8 +45,9 @@ real review app, display its widget only for genuine reviews.
 
 ## Products in the store (imported via DSers, 2026-10-14)
 
-Eight AliExpress products were pushed to Shopify with DSers, then rewritten in Swedish. All are
-**DRAFT** (not visible) until the owner activates them, ideally after checking samples. The eight
+Eight AliExpress products were pushed to Shopify with DSers, then rewritten in Swedish. All eight
+were set to **Active** and published to the Online Store on 2026-10-14 at the owner's request; the
+storefront is still password-protected, so only people with the password can see them. The eight
 `demo` drafts were deleted the same day.
 
 Prices approved by the owner 2026-10-14. Calculation: purchase price + ~20 kr AliExpress shipping

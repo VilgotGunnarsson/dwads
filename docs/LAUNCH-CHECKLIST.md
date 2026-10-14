@@ -33,8 +33,8 @@ is done in this repository; items marked ☐ in A need real assets or content.
 - [x] Main menu and footer menu
 - [x] Product metafield definitions created (14, namespace `custom`, pinned)
 - [ ] Real products created with verified data; `specs_verified` set only where checked
-      (8 imported via DSers, rewritten in Swedish and priced 2026-10-14 – still drafts until
-      samples are checked, see PRODUCT-DATA.md)
+      (8 imported via DSers, rewritten in Swedish, priced and activated 2026-10-14 – check the
+      samples, see PRODUCT-DATA.md)
 - [x] All `demo` products deleted (2026-10-14)
 - [ ] Search & Discovery filters
 - [ ] Policies filled in **in Swedish** (refund, privacy, terms, shipping, contact)

@@ -134,6 +134,7 @@
       "settings": {
         "eyebrow": "Produkter",
         "heading": "Utvalt för hemmet",
+        "products": ["magnetiskt-barnlas", "hornskydd", "sparr-for-dorrhandtag", "kylskapslas"],
         "limit": 4,
         "columns": "4",
         "show_view_all": true,
