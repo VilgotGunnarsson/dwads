@@ -103,8 +103,9 @@ automatically. The same app powers **complementary recommendations** on product 
 
 - Create a shipping profile for Sweden with the **real** rates you will charge. Shopify Checkout
   shows them to the customer; the theme only says "Leveranstid och fraktkostnad visas i kassan".
-- Only after confirming with the supplier, add a delivery time under **Theme settings →
-  Leverans, retur och priser → Leveranstid** (store-wide) or per product (`custom.delivery_estimate`).
+- Delivery time: **Theme settings → Leverans, retur och priser → Leveranstid** is set to
+  "Normalt 7–20 dagar" (AliExpress Selection Standard quotes in DSers, 2026-10-14). Change it
+  there store-wide, or per product with `custom.delivery_estimate`, if real deliveries differ.
 - Do not advertise free shipping or delivery windows in the announcement bar or trust points
   unless they are configured and reliable.
 

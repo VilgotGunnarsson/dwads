@@ -33,13 +33,13 @@ is done in this repository; items marked ☐ in A need real assets or content.
 - [x] Main menu and footer menu
 - [x] Product metafield definitions created (14, namespace `custom`, pinned)
 - [ ] Real products created with verified data; `specs_verified` set only where checked
-      (8 imported via DSers and rewritten in Swedish 2026-10-14 – still drafts; prices, samples
-      and corner-protector variant names pending, see PRODUCT-DATA.md)
+      (8 imported via DSers, rewritten in Swedish and priced 2026-10-14 – still drafts until
+      samples are checked, see PRODUCT-DATA.md)
 - [x] All `demo` products deleted (2026-10-14)
 - [ ] Search & Discovery filters
 - [ ] Policies filled in **in Swedish** (refund, privacy, terms, shipping, contact)
 - [ ] Theme settings → Företagsuppgifter (name, org.nr, address, email)
-- [ ] Theme settings → Leverans: delivery time only if confirmed
+- [x] Theme settings → Leverans: "Normalt 7–20 dagar" (from DSers quotes; confirm with sample orders)
 - [ ] Cookie banner enabled (Settings → Customer privacy)
 - [ ] Email marketing app (if newsletter is used) + double opt-in
 - [ ] Notification emails reviewed in Swedish (order confirmation must contain the required

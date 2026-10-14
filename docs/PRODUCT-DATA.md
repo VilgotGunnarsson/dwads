@@ -46,19 +46,26 @@ real review app, display its widget only for genuine reviews.
 ## Products in the store (imported via DSers, 2026-10-14)
 
 Eight AliExpress products were pushed to Shopify with DSers, then rewritten in Swedish. All are
-**DRAFT** (not visible) until prices are approved and samples have been checked. The eight `demo`
-drafts were deleted the same day.
+**DRAFT** (not visible) until the owner activates them, ideally after checking samples. The eight
+`demo` drafts were deleted the same day.
 
-| Handle | Title | Product type (collection) | Extra tag | Variants (option) |
+Prices approved by the owner 2026-10-14. Calculation: purchase price + ~20 kr AliExpress shipping
+(US$1.99), 25 % VAT included in the price, ~3 % payment fee; roughly 2–2.8 × landed cost.
+
+| Handle | Title | Product type (collection) | Extra tag | Variants and prices |
 |---|---|---|---|---|
-| `magnetiskt-barnlas` | Magnetiskt barnlås för skåp och lådor | Lås & spärrar | `kategori-skap-lador` | Antal: 4 lås + 1 nyckel … 20 lås + 5 nycklar |
-| `flexibel-skapsparr` | Flexibel spärr för skåp och lådor | Skåp & lådor | – | Antal: 10–60 st |
-| `kylskapslas` | Kylskåpslås med tryckknapp | Lås & spärrar | – | Antal: 1, 3, 6 st |
-| `sparr-for-dorrhandtag` | Spärr för dörrhandtag | Dörrar & klämskydd | `kategori-las-sparrar` | Färg: Vit · Skickas från: Kina |
-| `klamskydd-dorr` | Klämskydd för dörr i mjuk skumplast | Dörrar & klämskydd | – | Antal: 3, 6 st |
-| `uttagsskydd-vridlock` | Uttagsskydd med vridlock | Eluttag | – | Antal: 1, 5, 6 st · Skickas från: Kina |
-| `kantlist-genomskinlig` | Genomskinlig kantlist, 3 m | Kant- & hörnskydd | – | Längd: 3 m |
-| `hornskydd` | Hörnskydd för bord och möbler | Kant- & hörnskydd | – | Modell: 15 supplier values, still in English |
+| `magnetiskt-barnlas` | Magnetiskt barnlås för skåp och lådor | Lås & spärrar | `kategori-skap-lador` | 4 lås + 1 nyckel 249 kr · 8 + 2 449 kr · 12 + 3 599 kr |
+| `flexibel-skapsparr` | Flexibel spärr för skåp och lådor | Skåp & lådor | – | 10 st 149 kr · 20 st 249 kr · 40 st 399 kr |
+| `kylskapslas` | Kylskåpslås med tryckknapp | Lås & spärrar | – | 1 st 179 kr · 3 st 299 kr · 6 st 449 kr |
+| `sparr-for-dorrhandtag` | Spärr för dörrhandtag | Dörrar & klämskydd | `kategori-las-sparrar` | Vit 99 kr (option "Skickas från: Kina" hidden on the product page) |
+| `klamskydd-dorr` | Klämskydd för dörr i mjuk skumplast | Dörrar & klämskydd | – | 3 st 99 kr · 6 st 149 kr |
+| `uttagsskydd-vridlock` | Uttagsskydd med vridlock | Eluttag | – | 6 st 199 kr |
+| `kantlist-genomskinlig` | Genomskinlig kantlist, 3 m | Kant- & hörnskydd | – | 3 m 279 kr |
+| `hornskydd` | Hörnskydd för bord och möbler | Kant- & hörnskydd | – | 10 st 149 kr (supplier variant "Upgraded-round-10pcs") |
+
+Variants removed on the owner's request: magnetic lock 16 + 4 and 20 + 5, strap lock 30/50/60 st,
+outlet cover 1 st and 5 st, and all corner-protector shapes except one. To bring one back,
+re-import it from DSers.
 
 What was set on every product:
 - Swedish title, handle, description (what it does, mounting, "Bra att veta"), SEO title and
@@ -77,15 +84,14 @@ Claims from the supplier listings such as "3M", "food grade", "100 % safe" and "
 fit" were not used.
 
 Open points:
-- **Prices** are still DSers' purchase price (= cost). Set the approved prices before activating.
-- **Hörnskydd** variant names ("Heart-window", "Upgraded-round", …) need someone who can see the
-  images to name them in Swedish; most variants have under 30 in stock.
 - **Uttagsskydd** is described by the supplier as a *"French spring model"*. French (type E) and
   Swedish (type F) sockets differ – test a sample in a Swedish socket before selling.
 - Several variants have very low supplier stock (magnetic 8+2: 2, strap 20 st: 6, foam guard:
   10–16). DSers syncs stock, and Shopify shows "Slutsåld" automatically when it reaches 0.
 - Delivery to Sweden quoted in DSers: AliExpress Selection Standard, about US$1.99 per item,
-  7–16 days (one product up to 20 days). Add a delivery text only once confirmed.
+  7–16 days (one product up to 20 days). The theme setting *Leveranstid* is set to
+  "Normalt 7–20 dagar"; adjust it if the sample orders show something else.
+- If DSers' automatic price update is on, it can overwrite these prices – keep it off.
 
 ### Demo safeguards (kept in the theme)
 
